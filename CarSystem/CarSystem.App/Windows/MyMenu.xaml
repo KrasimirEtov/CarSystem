@@ -1,0 +1,30 @@
+﻿<Controls:MetroWindow x:Name="MyMenuWindow" x:Class="CarSystem.App.Windows.MyMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarSystem.App.Windows"
+		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Меню" Height="548" Width="1024" Background="Gainsboro" WindowStartupLocation="CenterScreen">
+	<Grid Opacity="0.95">
+		<Controls:Tile x:Name="CameraRadarTile" Margin="35,45,790,305" Height="Auto" Width="Auto" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15">
+			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="117" Height="125" Margin="0,0,0,15"></Image>
+		</Controls:Tile>
+		<Controls:Tile x:Name="CameraRadarTile_Copy" Margin="280,45,544.6,305.4" Height="Auto" Width="Auto" Title="Неплатени фишове" Opacity="0.95" TitleFontSize="15">
+			<Image Source="/CarSystem.App;component/Images/Police.png" Width="117" Height="125" Margin="0,0,0,15"/>
+		</Controls:Tile>
+		<Controls:Tile x:Name="CameraRadarTile_Copy1" Margin="523,45,54.6,305.4" Height="Auto" Width="Auto" Title="Справка за актове" Opacity="0.95" TitleFontSize="15">
+			<Image Source="/CarSystem.App;component/Images/Note.png" Width="117" Height="125" Margin="0,0,0,15"/>
+		</Controls:Tile>
+		<Controls:Tile x:Name="CameraRadarTile_Copy2" Margin="35,289,544.6,61.4" Height="Auto" Width="Auto" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15">
+			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="117" Height="125" Margin="0,0,0,15"/>
+		</Controls:Tile>
+		<Controls:Tile x:Name="CameraRadarTile_Copy3" Margin="523,289,301.6,61.4" Height="Auto" Width="Auto" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15">
+			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="117" Height="125" Margin="0,0,0,15"/>
+		</Controls:Tile>
+		<Controls:Tile x:Name="CameraRadarTile_Copy4" Margin="770,289,54.6,61.4" Height="Auto" Width="Auto" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15">
+			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="117" Height="125" Margin="0,0,0,15"/>
+		</Controls:Tile>
+	</Grid>
+</Controls:MetroWindow>

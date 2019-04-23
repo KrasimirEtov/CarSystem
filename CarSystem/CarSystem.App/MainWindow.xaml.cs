@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using CarSystem.App.Windows;
 using MahApps.Metro.Controls;
 
 namespace CarSystem.App
@@ -24,6 +13,13 @@ namespace CarSystem.App
 		public MainWindow()
 		{
 			InitializeComponent();
+		}
+
+		private void StartupButton_Click(object sender, RoutedEventArgs e)
+		{
+			var myMenu = new MyMenu();
+			this.Close();
+			myMenu.ShowDialog();
 		}
 	}
 }
