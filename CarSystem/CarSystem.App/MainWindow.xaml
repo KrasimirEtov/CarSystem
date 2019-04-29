@@ -8,8 +8,13 @@
         mc:Ignorable="d"
         Title="Начало" Height="430" Width="400" Background="Gainsboro" WindowStartupLocation="CenterScreen">
 	<Grid>
-		<Image x:Name="StartupImage" HorizontalAlignment="Left" Height="139" Margin="136,34,0,0" VerticalAlignment="Top" Width="145" Source="Images/Startup.png" Stretch="Fill"/>
-		<Button x:Name="StartupButton" Content="Към менюто" HorizontalAlignment="Left" Margin="60,245,0,0" VerticalAlignment="Top" Width="271" Click="StartupButton_Click" Cursor="Hand" Height="65" FontSize="16" FontWeight="Bold" FontFamily="Arial" BorderBrush="#FF3B8CE4" Foreground="#FF4F4D4D"/>
-		<TextBlock HorizontalAlignment="Left" Margin="150,178,0,0" TextWrapping="Wrap" Text="Добре дошли" VerticalAlignment="Top" Width="100" FontSize="15" FontStyle="Italic"/>
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
+		<Image x:Name="StartupImage" Grid.Row="0" HorizontalAlignment="Left" Height="124" Margin="136,10,0,0" VerticalAlignment="Top" Width="136" Source="Images/Startup.png" Stretch="Fill"/>
+		<Image x:Name="CarSystemImage" Grid.Row="1" HorizontalAlignment="Left" Height="64" Margin="0,35.4,-0.4,0" VerticalAlignment="Top" Width="394" Source="Images/CarSystem.png" Stretch="Fill"/>
+		<Button x:Name="StartupButton" Grid.Row="2" Content="Към менюто" HorizontalAlignment="Left" Margin="10,34.8,0,0" VerticalAlignment="Top" Width="374" Click="StartupButton_Click" Cursor="Hand" Height="65" FontSize="16" FontWeight="Bold" FontFamily="Arial" BorderBrush="#FF3B8CE4" Foreground="#FF4F4D4D"/>
 	</Grid>
 </Controls:MetroWindow>

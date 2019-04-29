@@ -11,5 +11,12 @@ namespace CarSystem.App.Windows
 		{
 			InitializeComponent();
 		}
+
+		private void PreviousButton_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			var startupWindow = new MainWindow();
+			this.Close();
+			startupWindow.ShowDialog();
+		}
 	}
 }

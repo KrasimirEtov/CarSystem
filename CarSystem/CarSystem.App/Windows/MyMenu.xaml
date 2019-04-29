@@ -8,23 +8,32 @@
         mc:Ignorable="d"
         Title="Меню" Height="548" Width="1024" Background="Gainsboro" WindowStartupLocation="CenterScreen">
 	<Grid Opacity="0.95">
-		<Controls:Tile x:Name="CameraRadarTile" Margin="35,45,790,305" Height="Auto" Width="Auto" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15">
-			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="117" Height="125" Margin="0,0,0,15"></Image>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<Image x:Name="PreviousButton" Source="/CarSystem.App;component/Images/Previous.png" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="28" Width="Auto" Margin="10,10,0,0" VerticalAlignment="Top" MouseLeftButtonDown="PreviousButton_MouseLeftButtonDown" Cursor="Hand" ToolTip="Върни се на предишният екран"/>
+		<Controls:Tile x:Name="CameraRadarTile" Margin="44,54,780.8,298" Height="180" Width="200" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15" Cursor="Hand">
+			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="115" Height="Auto" Margin="0,0,0,15"></Image>
 		</Controls:Tile>
-		<Controls:Tile x:Name="CameraRadarTile_Copy" Margin="280,45,544.6,305.4" Height="Auto" Width="Auto" Title="Неплатени фишове" Opacity="0.95" TitleFontSize="15">
-			<Image Source="/CarSystem.App;component/Images/Police.png" Width="117" Height="125" Margin="0,0,0,15"/>
+		<Controls:Tile x:Name="CameraRadarTile_Copy" Margin="285,54,539.8,298" Height="180" Width="200" Title="Неплатени фишове" Opacity="0.95" TitleFontSize="15" Cursor="Hand">
+			<Image Source="/CarSystem.App;component/Images/Police.png" Width="115" Height="Auto" Margin="0,0,0,15"/>
 		</Controls:Tile>
-		<Controls:Tile x:Name="CameraRadarTile_Copy1" Margin="523,45,54.6,305.4" Height="Auto" Width="Auto" Title="Справка за актове" Opacity="0.95" TitleFontSize="15">
-			<Image Source="/CarSystem.App;component/Images/Note.png" Width="117" Height="125" Margin="0,0,0,15"/>
+		<Controls:Tile x:Name="CameraRadarTile_Copy1" Margin="534,54,50.8,298" Height="180" Width="Auto" Title="Справка за актове" Opacity="0.95" TitleFontSize="15" Cursor="Hand">
+			<Image Source="/CarSystem.App;component/Images/Note.png" Width="115" Height="Auto" Margin="0,0,0,15"/>
 		</Controls:Tile>
-		<Controls:Tile x:Name="CameraRadarTile_Copy2" Margin="35,289,544.6,61.4" Height="Auto" Width="Auto" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15">
-			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="117" Height="125" Margin="0,0,0,15"/>
+		<Controls:Tile x:Name="CameraRadarTile_Copy2" Margin="44,286,539.8,66" Height="180" Width="Auto" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15" Cursor="Hand">
+			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="115" Height="Auto" Margin="0,0,0,15"/>
 		</Controls:Tile>
-		<Controls:Tile x:Name="CameraRadarTile_Copy3" Margin="523,289,301.6,61.4" Height="Auto" Width="Auto" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15">
-			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="117" Height="125" Margin="0,0,0,15"/>
+		<Controls:Tile x:Name="CameraRadarTile_Copy3" Margin="534,286,290.8,66" Height="180" Width="200" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15" Cursor="Hand">
+			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="115" Height="Auto" Margin="0,0,0,15"/>
 		</Controls:Tile>
-		<Controls:Tile x:Name="CameraRadarTile_Copy4" Margin="770,289,54.6,61.4" Height="Auto" Width="Auto" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15">
-			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="117" Height="125" Margin="0,0,0,15"/>
+		<Controls:Tile x:Name="CameraRadarTile_Copy4" Margin="774,286,50.8,66" Height="180" Width="200" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15" Cursor="Hand">
+			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="115" Height="Auto" Margin="0,0,0,15"/>
 		</Controls:Tile>
 	</Grid>
 </Controls:MetroWindow>
