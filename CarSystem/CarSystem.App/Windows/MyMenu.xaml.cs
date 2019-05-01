@@ -1,4 +1,6 @@
-﻿using MahApps.Metro.Controls;
+﻿using Autofac;
+using CarSystem.App.Infrastructure;
+using MahApps.Metro.Controls;
 
 namespace CarSystem.App.Windows
 {
@@ -7,6 +9,8 @@ namespace CarSystem.App.Windows
 	/// </summary>
 	public partial class MyMenu : MetroWindow
 	{
+		IContainer container = ContainerConfiguration.GetContainer();
+
 		public MyMenu()
 		{
 			InitializeComponent();
@@ -14,7 +18,7 @@ namespace CarSystem.App.Windows
 
 		private void PreviousButton_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-			var startupWindow = new MainWindow();
+			var startupWindow = container.Resolve<MainWindow>();
 			this.Close();
 			startupWindow.ShowDialog();
 		}

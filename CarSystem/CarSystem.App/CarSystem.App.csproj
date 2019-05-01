@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
@@ -64,6 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Infrastructure\ContainerConfiguration.cs" />
     <Compile Include="Windows\MyMenu.xaml.cs">
       <DependentUpon>MyMenu.xaml</DependentUpon>
     </Compile>
@@ -127,6 +131,20 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarSystem.Data.Models\CarSystem.Data.Models.csproj">
+      <Project>{a282bae9-34c6-48b1-a2c6-e1efe49a3b46}</Project>
+      <Name>CarSystem.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarSystem.Data\CarSystem.Data.csproj">
+      <Project>{bfb7fba8-ef7f-4497-b03c-c47ea4eaa798}</Project>
+      <Name>CarSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarSystem.Services\CarSystem.Services.csproj">
+      <Project>{0e4a4c00-84d5-47f9-afd9-5e130c91092b}</Project>
+      <Name>CarSystem.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
