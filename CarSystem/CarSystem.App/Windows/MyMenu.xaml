@@ -6,34 +6,33 @@
         xmlns:local="clr-namespace:CarSystem.App.Windows"
 		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Меню" Height="548" Width="1024" Background="Gainsboro" WindowStartupLocation="CenterScreen">
+        Title="Меню" Height="500" Width="700" Background="Gainsboro" WindowStartupLocation="CenterScreen">
 	<Grid Opacity="0.95">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="Auto"/>
 		</Grid.ColumnDefinitions>
 
 		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="50"/>
+			<RowDefinition Height="140"/>
+			<RowDefinition Height="140"/>
+			<RowDefinition Height="140"/>
 		</Grid.RowDefinitions>
 
-		<Image x:Name="PreviousButton" Source="/CarSystem.App;component/Images/Previous.png" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="28" Width="Auto" Margin="10,10,0,0" VerticalAlignment="Top" MouseLeftButtonDown="PreviousButton_MouseLeftButtonDown" Cursor="Hand" ToolTip="Върни се на предишният екран"/>
-		<Controls:Tile x:Name="CameraRadarTile" Margin="44,54,780.8,298" Height="180" Width="200" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15" Cursor="Hand">
-			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="115" Height="Auto" Margin="0,0,0,15"></Image>
+		<Rectangle Grid.Row="0" Fill="GhostWhite" />
+		<Image x:Name="PreviousButton" Source="/CarSystem.App;component/Images/Previous.png" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="45" Width="52" Margin="10,5,0,0" VerticalAlignment="Top" MouseLeftButtonDown="PreviousButton_MouseLeftButtonDown" Cursor="Hand" ToolTip="Върни се към предишният екран" Grid.RowSpan="2"/>
+		<TextBlock HorizontalAlignment="Center" Margin="404,12,679.8,10.6" TextWrapping="Wrap" Text="Изберете опция от наличните" VerticalAlignment="Center" Height="27" Width="281" FontSize="20"/>
+
+		<Controls:Tile x:Name="ViolationsTile" Grid.Column="0" Grid.Row="1" Margin="10,10,680,10" Title="Нарушения" Opacity="0.95" TitleFontSize="18" Cursor="Hand" Height="Auto" Width="675" Click="ViolationsTile_Click">
+			<Image Source="/CarSystem.App;component/Images/Violations.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="110"/>
 		</Controls:Tile>
-		<Controls:Tile x:Name="CameraRadarTile_Copy" Margin="285,54,539.8,298" Height="180" Width="200" Title="Неплатени фишове" Opacity="0.95" TitleFontSize="15" Cursor="Hand">
-			<Image Source="/CarSystem.App;component/Images/Police.png" Width="115" Height="Auto" Margin="0,0,0,15"/>
+
+		<Controls:Tile x:Name="ReferencesTile" Grid.Column="0" Grid.Row="2" Margin="10,10,680,10" Title="Справки" Opacity="0.95" TitleFontSize="18" Cursor="Hand" Height="Auto" Width="675">
+			<Image Source="/CarSystem.App;component/Images/References.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="100"/>
 		</Controls:Tile>
-		<Controls:Tile x:Name="CameraRadarTile_Copy1" Margin="534,54,50.8,298" Height="180" Width="Auto" Title="Справка за актове" Opacity="0.95" TitleFontSize="15" Cursor="Hand">
-			<Image Source="/CarSystem.App;component/Images/Note.png" Width="115" Height="Auto" Margin="0,0,0,15"/>
-		</Controls:Tile>
-		<Controls:Tile x:Name="CameraRadarTile_Copy2" Margin="44,286,539.8,66" Height="180" Width="Auto" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15" Cursor="Hand">
-			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="115" Height="Auto" Margin="0,0,0,15"/>
-		</Controls:Tile>
-		<Controls:Tile x:Name="CameraRadarTile_Copy3" Margin="534,286,290.8,66" Height="180" Width="200" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15" Cursor="Hand">
-			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="115" Height="Auto" Margin="0,0,0,15"/>
-		</Controls:Tile>
-		<Controls:Tile x:Name="CameraRadarTile_Copy4" Margin="774,286,50.8,66" Height="180" Width="200" Title="Засечени от камери" Opacity="0.95" TitleFontSize="15" Cursor="Hand">
-			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="115" Height="Auto" Margin="0,0,0,15"/>
+
+		<Controls:Tile x:Name="RegistrationsTile" Grid.Column="0" Grid.Row="3" Margin="10,10,680,10" Title="Регистрации" Opacity="0.95" TitleFontSize="18" Cursor="Hand" Height="Auto" Width="675">
+			<Image Source="/CarSystem.App;component/Images/Registrations.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="105"/>
 		</Controls:Tile>
 	</Grid>
 </Controls:MetroWindow>

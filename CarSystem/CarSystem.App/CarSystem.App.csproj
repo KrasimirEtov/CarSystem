@@ -71,6 +71,9 @@
     <Compile Include="Windows\MyMenu.xaml.cs">
       <DependentUpon>MyMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Violations.xaml.cs">
+      <DependentUpon>Violations.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -84,6 +87,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\MyMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Violations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -122,9 +129,9 @@
     <Resource Include="Images\Camera.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Note.png" />
+    <Resource Include="Images\References.png" />
     <Resource Include="Images\Owner.png" />
-    <Resource Include="Images\Police.png" />
+    <Resource Include="Images\Violations.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\CarSystem.png" />
@@ -145,6 +152,18 @@
       <Project>{0e4a4c00-84d5-47f9-afd9-5e130c91092b}</Project>
       <Name>CarSystem.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Registrations.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Slips.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Acts.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

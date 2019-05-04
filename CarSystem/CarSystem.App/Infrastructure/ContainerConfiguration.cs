@@ -20,6 +20,7 @@ namespace CarSystem.App.Infrastructure
 			// Register windows
 			builder.RegisterType<MyMenu>().AsSelf();
 			builder.RegisterType<MainWindow>().AsSelf();
+			builder.RegisterType<Violations>().AsSelf();
 
 			// Register Database context
 			builder.RegisterType<CarSystemDbContext>().AsSelf();
