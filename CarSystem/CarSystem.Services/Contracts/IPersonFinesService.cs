@@ -9,6 +9,6 @@ namespace CarSystem.Services.Contracts
 {
 	public interface IPersonFinesService
 	{
-		Task<List<PersonFines>> GetAllPersonFinesAsync();
+		Task<List<PersonFines>> GetFilteredPersonFinesAsync(string violationName, string cardId = "", string egn = "", string carNumber = "", string fineNumber = "");
 	}
 }

@@ -14,7 +14,7 @@ namespace CarSystem.App.Infrastructure
 		public ProviderMappingProfile()
 		{
 			CreateMap<PersonFines, CameraRadarViolationsViewModel>()
-				.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Person.FirstName + src.Person.LastName))
+				.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Person.FirstName + " " + src.Person.LastName))
 				.ForMember(dest => dest.EGN, opt => opt.MapFrom(src => src.Person.EGN))
 				.ForMember(dest => dest.CardId, opt => opt.MapFrom(src => src.Person.CardId))
 				.ForMember(dest => dest.CarModel, opt => opt.MapFrom(src => src.Car.Model))

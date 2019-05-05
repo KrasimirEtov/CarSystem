@@ -41,11 +41,11 @@
 		<TextBox x:Name="FineNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="580,59.6,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи номер тук" VerticalAlignment="Top" Width="200" TextChanged="TextBoxChange"/>
 
 		<Button x:Name="FilterButton" Content="Филтрирай" HorizontalAlignment="Left" Margin="10,104.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="421" Height="37" Cursor="Hand" Click="FilterButton_Click" IsEnabled="False"/>
-		<Button x:Name="ClearFiltersButton" Content="Изчисти филтрите" HorizontalAlignment="Left" Margin="460,104.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="320" Height="37" Cursor="Hand" Click="ClearFiltersButton_Click" IsEnabled="False"/>
+		<Button x:Name="ClearFiltersButton" Content="Изчисти филтрите" HorizontalAlignment="Left" Margin="460,104.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="320" Height="37" Cursor="Hand" Click="ClearFiltersButton_Click"/>
 
-		<DataGrid x:Name="CameraRadarViolationsDataGrid" AutoGenerateColumns="True" AutoGeneratingColumn="CameraRadarViolationsDataGrid_AutoGeneratingColumn" ItemsSource="{Binding Path=CameraRadarViolationsList}" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="False" Block.TextAlignment="Center" Grid.Row="2" Margin="0,0.4,696.4,-187.6" ColumnWidth="*" RowHeight="40" Width="Auto" MaxWidth="650" Height="Auto" MaxHeight="800" Cursor="Hand">
-			
+		<DataGrid x:Name="CameraRadarViolationsDataGrid" ItemsSource="{Binding CameraRadarViolationsList}" AutoGenerateColumns="True" AutoGeneratingColumn="CameraRadarViolationsDataGrid_AutoGeneratingColumn" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="False" Block.TextAlignment="Center" Grid.Row="2" Margin="0,0.4,696.4,-187.6" ColumnWidth="*" RowHeight="40" Width="Auto" MaxWidth="650" Height="Auto" MaxHeight="800" Cursor="Hand">
+
 		</DataGrid>
-		
+
 	</Grid>
 </Controls:MetroWindow>

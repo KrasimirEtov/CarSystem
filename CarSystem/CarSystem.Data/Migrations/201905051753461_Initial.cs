@@ -21,6 +21,7 @@ namespace CarSystem.Data.Migrations
                         Number = c.String(),
                         FuelId = c.Int(nullable: false),
                         EmissionStandartId = c.Int(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.EmissionStandarts", t => t.EmissionStandartId, cascadeDelete: true)
@@ -34,6 +35,7 @@ namespace CarSystem.Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -43,6 +45,7 @@ namespace CarSystem.Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -53,6 +56,7 @@ namespace CarSystem.Data.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         PersonId = c.Int(nullable: false),
                         CarId = c.Int(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Cars", t => t.CarId, cascadeDelete: true)
@@ -70,6 +74,7 @@ namespace CarSystem.Data.Migrations
                         EGN = c.String(),
                         CardId = c.String(),
                         GenderId = c.Int(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Genders", t => t.GenderId, cascadeDelete: true)
@@ -81,6 +86,7 @@ namespace CarSystem.Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -95,14 +101,18 @@ namespace CarSystem.Data.Migrations
                         PersonId = c.Int(nullable: false),
                         FineId = c.Int(nullable: false),
                         CarId = c.Int(nullable: false),
+                        ViolationId = c.Int(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Cars", t => t.CarId, cascadeDelete: true)
                 .ForeignKey("dbo.Fines", t => t.FineId, cascadeDelete: true)
                 .ForeignKey("dbo.People", t => t.PersonId, cascadeDelete: true)
+                .ForeignKey("dbo.Violations", t => t.ViolationId, cascadeDelete: true)
                 .Index(t => t.PersonId)
                 .Index(t => t.FineId)
-                .Index(t => t.CarId);
+                .Index(t => t.CarId)
+                .Index(t => t.ViolationId);
             
             CreateTable(
                 "dbo.Fines",
@@ -111,6 +121,18 @@ namespace CarSystem.Data.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Violation = c.String(),
+                        IsDeleted = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Violations",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Message = c.String(),
+                        IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -118,6 +140,7 @@ namespace CarSystem.Data.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.PersonFines", "ViolationId", "dbo.Violations");
             DropForeignKey("dbo.PersonFines", "PersonId", "dbo.People");
             DropForeignKey("dbo.PersonFines", "FineId", "dbo.Fines");
             DropForeignKey("dbo.PersonFines", "CarId", "dbo.Cars");
@@ -126,6 +149,7 @@ namespace CarSystem.Data.Migrations
             DropForeignKey("dbo.PersonCars", "CarId", "dbo.Cars");
             DropForeignKey("dbo.Cars", "FuelId", "dbo.Fuels");
             DropForeignKey("dbo.Cars", "EmissionStandartId", "dbo.EmissionStandarts");
+            DropIndex("dbo.PersonFines", new[] { "ViolationId" });
             DropIndex("dbo.PersonFines", new[] { "CarId" });
             DropIndex("dbo.PersonFines", new[] { "FineId" });
             DropIndex("dbo.PersonFines", new[] { "PersonId" });
@@ -134,6 +158,7 @@ namespace CarSystem.Data.Migrations
             DropIndex("dbo.PersonCars", new[] { "PersonId" });
             DropIndex("dbo.Cars", new[] { "EmissionStandartId" });
             DropIndex("dbo.Cars", new[] { "FuelId" });
+            DropTable("dbo.Violations");
             DropTable("dbo.Fines");
             DropTable("dbo.PersonFines");
             DropTable("dbo.Genders");

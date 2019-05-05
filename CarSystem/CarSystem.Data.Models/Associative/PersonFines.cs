@@ -18,9 +18,11 @@ namespace CarSystem.Data.Models.Associative
 		public int PersonId { get; set; }
 		public int FineId { get; set; }
 		public int CarId { get; set; }
+		public int ViolationId { get; set; }
 
 		public virtual Person Person { get; set; }
 		public virtual Fine Fine { get; set; }
 		public virtual Car Car { get; set; }
+		public virtual Violation Violation { get; set; }
 	}
 }

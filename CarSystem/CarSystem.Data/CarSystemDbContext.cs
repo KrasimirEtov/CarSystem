@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CarSystem.Data.Models;
 using CarSystem.Data.Models.Associative;
+using CarSystem.Data.Models.Contracts;
 
 namespace CarSystem.Data
 {
@@ -32,9 +33,30 @@ namespace CarSystem.Data
 
 		public DbSet<PersonFines> PersonFines { get; set; }
 
+		public DbSet<Violation> Violations { get; set; }
+
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
+		}
+
+		public override Task<int> SaveChangesAsync()
+		{
+			this.ApplyDeletionRules();
+			return base.SaveChangesAsync();
+		}
+
+		private void ApplyDeletionRules()
+		{
+			var entitiesForDeletion = this.ChangeTracker.Entries()
+				.Where(e => e.State == EntityState.Deleted && e.Entity is IDeletable);
+
+			foreach (var entry in entitiesForDeletion)
+			{
+				var entity = (IDeletable)entry.Entity;
+				entity.IsDeleted = true;
+				entry.State = EntityState.Modified;
+			}
 		}
 	}
 }

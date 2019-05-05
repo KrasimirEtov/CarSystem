@@ -27,43 +27,26 @@ namespace CarSystem.App.Windows
 	/// <summary>
 	/// Interaction logic for CameraRadarViolations.xaml
 	/// </summary>
-	public partial class CameraRadarViolations : MetroWindow, INotifyPropertyChanged
+	public partial class CameraRadarViolations : MetroWindow
 	{
 		Autofac.IContainer container = ContainerConfiguration.GetContainer();
 
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		private ObservableCollection<CameraRadarViolationsViewModel> cameraRadarViolationsList;
-		public ObservableCollection<CameraRadarViolationsViewModel> CameraRadarViolationsList
-		{
-			get
-			{
-				return this.cameraRadarViolationsList;
-			}
-			set
-			{
-				cameraRadarViolationsList = value;
-				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CameraRadarViolationsList"));
-			}
-		}
+		public ObservableCollection<CameraRadarViolationsViewModel> CameraRadarViolationsList { get; set; }
 
 		public CameraRadarViolations()
 		{
-			this.DataContext = this;
+			CameraRadarViolationsList = new ObservableCollection<CameraRadarViolationsViewModel>();
 			InitializeComponent();
 			LoadAllRecords();
-			//this.CameraRadarViolationsDataGrid.DataContext = CameraRadarViolationsList;
 			CameraRadarViolationsDataGrid.ItemsSource = CameraRadarViolationsList;
-			
 		}
 
 		private void LoadAllRecords()
 		{
 			var personFinesService = container.Resolve<IPersonFinesService>();
-			var dbModels = personFinesService.GetAllPersonFinesAsync().Result;
+			var dbModels = personFinesService.GetFilteredPersonFinesAsync(CarSystemConstants.CameraViolationName).Result;
 
-			var dtoModels = dbModels.Select(x => Mapper.Map<CameraRadarViolationsViewModel>(x)).ToList();
-			CameraRadarViolationsList = new ObservableCollection<CameraRadarViolationsViewModel>(dtoModels);
+			ProcessDbModels(dbModels);
 		}
 
 		private void PreviousButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -83,7 +66,11 @@ namespace CarSystem.App.Windows
 		private void FilterButton_Click(object sender, RoutedEventArgs e)
 		{
 			// Call service and pass filter parameters to get filtered results here
-			CameraRadarViolationsList.Clear();
+			var personFinesService = container.Resolve<IPersonFinesService>();
+
+			var dbModels = personFinesService.GetFilteredPersonFinesAsync(CarSystemConstants.CameraViolationName, CardIdTextBox.Text, EGNTextBox.Text, VehicleNumberTextBox.Text, FineNumberTextBox.Text).Result;
+
+			ProcessDbModels(dbModels);
 		}
 
 		private void ClearFiltersButton_Click(object sender, RoutedEventArgs e)
@@ -92,20 +79,18 @@ namespace CarSystem.App.Windows
 			FineNumberTextBox.Text = "";
 			EGNTextBox.Text = "";
 			VehicleNumberTextBox.Text = "";
+
 			LoadAllRecords();
-			CameraRadarViolationsDataGrid.ItemsSource = CameraRadarViolationsList;
 		}
 
 		private void TextBoxChange(object sender, TextChangedEventArgs e)
 		{
 			if (!string.IsNullOrEmpty(CardIdTextBox.Text) || !string.IsNullOrEmpty(FineNumberTextBox.Text) || !string.IsNullOrEmpty(EGNTextBox.Text) || !string.IsNullOrEmpty(VehicleNumberTextBox.Text))
 			{
-				ClearFiltersButton.IsEnabled = true;
 				FilterButton.IsEnabled = true;
 			}
 			else
 			{
-				ClearFiltersButton.IsEnabled = false;
 				FilterButton.IsEnabled = false;
 			}
 		}
@@ -118,6 +103,19 @@ namespace CarSystem.App.Windows
 				e.Column.Header = descriptor.DisplayName ?? descriptor.Name;
 				e.Column.HeaderStyle = new Style(typeof(DataGridColumnHeader));
 				e.Column.HeaderStyle.Setters.Add(new Setter(HorizontalContentAlignmentProperty, HorizontalAlignment.Center));
+			}
+		}
+
+		private void ProcessDbModels(List<PersonFines> dbModels)
+		{
+			var dtoModels = dbModels.Select(x => Mapper.Map<CameraRadarViolationsViewModel>(x)).ToList();
+			var observableDtoModels = new ObservableCollection<CameraRadarViolationsViewModel>(dtoModels);
+
+			CameraRadarViolationsList.Clear();
+
+			foreach (var item in observableDtoModels)
+			{
+				CameraRadarViolationsList.Add(item);
 			}
 		}
 	}

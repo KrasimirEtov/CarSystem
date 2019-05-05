@@ -19,10 +19,38 @@ namespace CarSystem.Services
 			this.context = context;
 		}
 
-		public Task<List<PersonFines>> GetAllPersonFinesAsync()
+		public Task<List<PersonFines>> GetFilteredPersonFinesAsync(string violationName, string cardId = "", string egn = "", string carNumber = "", string fineNumber = "")
 		{
-			return this.context.PersonFines
-				.ToListAsync();
+			var personFines = this.context.PersonFines
+				.Where(x => x.Violation.Name.Contains(violationName) && !x.IsDeleted)
+				.AsQueryable();
+
+			if (!string.IsNullOrEmpty(cardId))
+			{
+				personFines = personFines
+					.Where(x => x.Person.CardId.Contains(cardId))
+					.AsQueryable();
+			}
+			if (!string.IsNullOrEmpty(egn))
+			{
+				personFines = personFines
+					.Where(x => x.Person.EGN.Contains(egn))
+					.AsQueryable();
+			}
+			if (!string.IsNullOrEmpty(carNumber))
+			{
+				personFines = personFines
+					.Where(x => x.Car.Number.Contains(carNumber))
+					.AsQueryable();
+			}
+			if (!string.IsNullOrEmpty(fineNumber))
+			{
+				personFines = personFines.
+					Where(x => x.FineNumber.Contains(fineNumber))
+					.AsQueryable();
+			}
+
+			return personFines.ToListAsync();
 		}
 	}
 }
