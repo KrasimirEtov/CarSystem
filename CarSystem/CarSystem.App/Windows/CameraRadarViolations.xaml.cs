@@ -18,6 +18,7 @@ using Autofac;
 using AutoMapper;
 using CarSystem.App.Infrastructure;
 using CarSystem.App.Models;
+using CarSystem.App.Windows.Forms;
 using CarSystem.Data.Models.Associative;
 using CarSystem.Services.Contracts;
 using MahApps.Metro.Controls;
@@ -106,6 +107,11 @@ namespace CarSystem.App.Windows
 			}
 		}
 
+		private void HamburgerMenuButton_Click(object sender, RoutedEventArgs e)
+		{
+			HamburgerMenuFlyout.IsOpen = true;
+		}
+
 		private void ProcessDbModels(List<PersonFines> dbModels)
 		{
 			var dtoModels = dbModels.Select(x => Mapper.Map<CameraRadarViolationsViewModel>(x)).ToList();
@@ -117,6 +123,13 @@ namespace CarSystem.App.Windows
 			{
 				CameraRadarViolationsList.Add(item);
 			}
+		}
+
+		private void CreateButton_Click(object sender, RoutedEventArgs e)
+		{
+			var myMenu = container.Resolve<CreateCameraRadarViolation>();
+			
+			myMenu.ShowDialog();
 		}
 	}
 }

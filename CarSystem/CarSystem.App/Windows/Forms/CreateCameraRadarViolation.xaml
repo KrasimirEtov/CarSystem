@@ -1,0 +1,28 @@
+﻿<Controls:MetroWindow x:Name="CreateCameraRadarViolationWindow" x:Class="CarSystem.App.Windows.Forms.CreateCameraRadarViolation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarSystem.App.Windows.Forms"
+		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Създаване на нов запис" Height="450" Width="700" Background="Gainsboro" WindowStartupLocation="CenterScreen">
+	<Grid Opacity="0.95">
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50"/>
+			<RowDefinition Height="150"/>
+			<RowDefinition Height="220"/>
+		</Grid.RowDefinitions>
+
+		<Rectangle Grid.Row="0" Fill="GhostWhite" />
+		<TextBlock HorizontalAlignment="Center" Margin="137,13,806.4,9.6" Grid.Row="0" TextWrapping="Wrap" Text="Създаване на ново нарушение от тип - засечени от камера" VerticalAlignment="Center" Height="27" Width="547" FontSize="20"/>
+		<Button x:Name="SaveButton" Content="Запиши" HorizontalAlignment="Left" Margin="498,165,0,0" Grid.Row="2" VerticalAlignment="Top" Width="186" Height="42" FontSize="16" Click="SaveButton_Click" Cursor="Hand"/>
+		<Button x:Name="CancelButton" Content="Отказ" HorizontalAlignment="Left" Margin="10,165,0,0" Grid.Row="2" VerticalAlignment="Top" Width="186" Height="42" FontSize="16" Click="CancelButton_Click" Cursor="Hand"/>
+
+	</Grid>
+</Controls:MetroWindow>

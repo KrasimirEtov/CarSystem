@@ -20,8 +20,8 @@
 		</Grid.RowDefinitions>
 
 		<Rectangle Grid.Row="0" Fill="GhostWhite" />
-		<Button x:Name="PreviousButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="50" Cursor="Hand" ToolTip="Върни се към предишният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="48" Click="PreviousButton_Click">
-			<Image Source="/CarSystem.App;component/Images/Previous.png" Height="36" Width="40" />
+		<Button x:Name="PreviousButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Width="42" Cursor="Hand" ToolTip="Върни се към предишният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="PreviousButton_Click">
+			<Image Source="/CarSystem.App;component/Images/Previous.png" Height="33" Width="31" />
 		</Button>
 		<TextBlock HorizontalAlignment="Center" Margin="404,12,679.8,10.6" TextWrapping="Wrap" Text="Изберете опция от наличните" VerticalAlignment="Center" Height="27" Width="281" FontSize="20"/>
 

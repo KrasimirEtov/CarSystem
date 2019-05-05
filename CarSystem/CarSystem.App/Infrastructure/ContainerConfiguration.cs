@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using CarSystem.App.Windows;
+using CarSystem.App.Windows.Forms;
 using CarSystem.Data;
 using CarSystem.Services;
 using CarSystem.Services.Contracts;
@@ -22,6 +23,9 @@ namespace CarSystem.App.Infrastructure
 			builder.RegisterType<MainWindow>().AsSelf();
 			builder.RegisterType<Violations>().AsSelf();
 			builder.RegisterType<CameraRadarViolations>().AsSelf();
+
+			// Register form windows
+			builder.RegisterType<CreateCameraRadarViolation>().AsSelf();
 
 			// Register Database context
 			builder.RegisterType<CarSystemDbContext>().AsSelf();

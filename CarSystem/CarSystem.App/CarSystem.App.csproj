@@ -93,6 +93,9 @@
     <Compile Include="Windows\CameraRadarViolations.xaml.cs">
       <DependentUpon>CameraRadarViolations.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Forms\CreateCameraRadarViolation.xaml.cs">
+      <DependentUpon>CreateCameraRadarViolation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MyMenu.xaml.cs">
       <DependentUpon>MyMenu.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\CameraRadarViolations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Forms\CreateCameraRadarViolation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,6 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Acts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HamburgerMenu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

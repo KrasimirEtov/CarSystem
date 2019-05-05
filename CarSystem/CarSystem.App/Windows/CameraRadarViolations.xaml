@@ -20,13 +20,20 @@
 		</Grid.RowDefinitions>
 
 		<Rectangle Grid.Row="0" Fill="GhostWhite" />
-		<Button x:Name="PreviousButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="50" Cursor="Hand" ToolTip="Върни се към предишният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="48" Click="PreviousButton_Click">
-			<Image Source="/CarSystem.App;component/Images/Previous.png" Height="36" Width="40" />
+
+		<Button x:Name="PreviousButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Width="42" Cursor="Hand" ToolTip="Върни се към предишният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="PreviousButton_Click">
+			<Image Source="/CarSystem.App;component/Images/Previous.png" Height="33" Width="31" />
 		</Button>
-		<Button x:Name="HomeScreenButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="60,2,0,0" VerticalAlignment="Top" Width="50" Cursor="Hand" ToolTip="Върни се към началният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="48" Click="HomeScreenButton_Click">
-			<Image Source="/CarSystem.App;component/Images/HomeScreen.png" Height="36" Width="40" />
+
+		<Button x:Name="HomeScreenButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="60,6,0,0" VerticalAlignment="Top" Width="43" Cursor="Hand" ToolTip="Върни се към началният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="HomeScreenButton_Click">
+			<Image Source="/CarSystem.App;component/Images/HomeScreen.png" Height="32" Width="28" />
 		</Button>
-		<TextBlock HorizontalAlignment="Center" Margin="404,13,706.4,10.4" Grid.Row="0" TextWrapping="Wrap" Text="Списък с нарушения засечени от камери" VerticalAlignment="Center" Height="27" Width="380" FontSize="20"/>
+
+		<TextBlock HorizontalAlignment="Center" Margin="340,13,770.4,10.4" Grid.Row="0" TextWrapping="Wrap" Text="Списък с нарушения засечени от камери" VerticalAlignment="Center" Height="27" Width="380" FontSize="20"/>
+
+		<Button x:Name="HamburgerMenuButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="737,6,0,0" VerticalAlignment="Top" Width="43" Cursor="Hand" ToolTip="Кликни за допълнителни операции" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="HamburgerMenuButton_Click">
+			<Image Source="/CarSystem.App;component/Images/HamburgerMenu.png" Height="22" Width="22" />
+		</Button>
 
 		<Label x:Name="CardIdLabel" Content="Номер на лична карта:" HorizontalAlignment="Left" Margin="10,9.6,0,0" VerticalAlignment="Top" Grid.Row="1" FontSize="15"/>
 		<TextBox x:Name="CardIdTextBox" HorizontalAlignment="Left" Height="23" Margin="231,13.6,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи номер тук" VerticalAlignment="Top" Width="200" TextChanged="TextBoxChange"/>
@@ -46,6 +53,14 @@
 		<DataGrid x:Name="CameraRadarViolationsDataGrid" ItemsSource="{Binding CameraRadarViolationsList}" AutoGenerateColumns="True" AutoGeneratingColumn="CameraRadarViolationsDataGrid_AutoGeneratingColumn" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="False" Block.TextAlignment="Center" Grid.Row="2" Margin="0,0.4,696.4,-187.6" ColumnWidth="*" RowHeight="40" Width="Auto" MaxWidth="650" Height="Auto" MaxHeight="800" Cursor="Hand">
 
 		</DataGrid>
+
+		<Controls:Flyout x:Name="HamburgerMenuFlyout" Margin="460,0,696.4,-197.6" Grid.RowSpan="3" Width="334" Opacity="0.9" Visibility="Hidden" Cursor="Hand" Position="Right" Header="Операции" FontSize="16" Background="#FFEEEEEE" Foreground="#FF050505" Theme="Light" AnimateOpacity="True">
+			
+			<Canvas>
+				<Button x:Name="CreateButton" Content="Създай нов запис" HorizontalAlignment="Left" Width="314" Height="140" Canvas.Left="10" Canvas.Top="10" Cursor="Hand" FontSize="16" Click="CreateButton_Click"/>
+			</Canvas>
+
+		</Controls:Flyout>
 
 	</Grid>
 </Controls:MetroWindow>

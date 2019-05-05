@@ -20,11 +20,11 @@
 		</Grid.RowDefinitions>
 
 		<Rectangle Grid.Row="0" Fill="GhostWhite" />
-		<Button x:Name="PreviousButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="50" Cursor="Hand" ToolTip="Върни се към предишният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="48" Click="PreviousButton_Click">
-			<Image Source="/CarSystem.App;component/Images/Previous.png" Height="36" Width="40" />
+		<Button x:Name="PreviousButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Width="42" Cursor="Hand" ToolTip="Върни се към предишният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="PreviousButton_Click">
+			<Image Source="/CarSystem.App;component/Images/Previous.png" Height="33" Width="31" />
 		</Button>
-		<Button x:Name="HomeScreenButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="60,2,0,0" VerticalAlignment="Top" Width="50" Cursor="Hand" ToolTip="Върни се към началният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="48" Click="HomeScreenButton_Click">
-			<Image Source="/CarSystem.App;component/Images/HomeScreen.png" Height="36" Width="40" />
+		<Button x:Name="HomeScreenButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="60,6,0,0" VerticalAlignment="Top" Width="43" Cursor="Hand" ToolTip="Върни се към началният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="HomeScreenButton_Click">
+			<Image Source="/CarSystem.App;component/Images/HomeScreen.png" Height="32" Width="28" />
 		</Button>
 		<TextBlock HorizontalAlignment="Center" Margin="387,12,906.4,10.6" Grid.Row="0" TextWrapping="Wrap" Text="Изберете нарушение" VerticalAlignment="Center" Height="27" Width="197" FontSize="20"/>
 
