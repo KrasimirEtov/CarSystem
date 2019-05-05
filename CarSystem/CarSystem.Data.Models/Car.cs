@@ -22,6 +22,8 @@ namespace CarSystem.Data.Models
 
 		public decimal Weight { get; set; }
 
+		public string Number { get; set; }
+
 		public int FuelId { get; set; }
 		public Fuel Fuel { get; set; }
 
@@ -29,6 +31,8 @@ namespace CarSystem.Data.Models
 		public EmissionStandart EmissionStandart { get; set; }
 
 		public virtual ICollection<PersonCars> PersonCars { get; set; }
+
+		public virtual ICollection<PersonFines> PersonFines { get; set; }
 
 	}
 }

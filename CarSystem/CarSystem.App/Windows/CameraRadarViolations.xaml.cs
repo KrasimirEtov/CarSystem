@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -13,8 +15,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Autofac;
+using AutoMapper;
 using CarSystem.App.Infrastructure;
 using CarSystem.App.Models;
+using CarSystem.Data.Models.Associative;
+using CarSystem.Services.Contracts;
 using MahApps.Metro.Controls;
 
 namespace CarSystem.App.Windows
@@ -28,8 +33,8 @@ namespace CarSystem.App.Windows
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		private List<CameraRadarViolationsViewModel> cameraRadarViolationsList;
-		public List<CameraRadarViolationsViewModel> CameraRadarViolationsList
+		private ObservableCollection<CameraRadarViolationsViewModel> cameraRadarViolationsList;
+		public ObservableCollection<CameraRadarViolationsViewModel> CameraRadarViolationsList
 		{
 			get
 			{
@@ -44,9 +49,21 @@ namespace CarSystem.App.Windows
 
 		public CameraRadarViolations()
 		{
+			this.DataContext = this;
 			InitializeComponent();
-			CameraRadarViolationsList = GetData(); // Call service to get all camera violations here
-			this.CameraRadarViolationsDataGrid.DataContext = CameraRadarViolationsList;
+			LoadAllRecords();
+			//this.CameraRadarViolationsDataGrid.DataContext = CameraRadarViolationsList;
+			CameraRadarViolationsDataGrid.ItemsSource = CameraRadarViolationsList;
+			
+		}
+
+		private void LoadAllRecords()
+		{
+			var personFinesService = container.Resolve<IPersonFinesService>();
+			var dbModels = personFinesService.GetAllPersonFinesAsync().Result;
+
+			var dtoModels = dbModels.Select(x => Mapper.Map<CameraRadarViolationsViewModel>(x)).ToList();
+			CameraRadarViolationsList = new ObservableCollection<CameraRadarViolationsViewModel>(dtoModels);
 		}
 
 		private void PreviousButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -66,18 +83,7 @@ namespace CarSystem.App.Windows
 		private void FilterButton_Click(object sender, RoutedEventArgs e)
 		{
 			// Call service and pass filter parameters to get filtered results here
-			CameraRadarViolationsList = new List<CameraRadarViolationsViewModel>()
-			{
-				new CameraRadarViolationsViewModel()
-				{
-					CarBrand = "Audi",
-					CardId = "12345678",
-					CarModel = "A3",
-					EGN = "123456789",
-					Name = "Imeto na chovekaaaaaaaaaaaaaaaaaaaaa"
-				}
-			};
-			CameraRadarViolationsDataGrid.ItemsSource = CameraRadarViolationsList;
+			CameraRadarViolationsList.Clear();
 		}
 
 		private void ClearFiltersButton_Click(object sender, RoutedEventArgs e)
@@ -86,7 +92,8 @@ namespace CarSystem.App.Windows
 			FineNumberTextBox.Text = "";
 			EGNTextBox.Text = "";
 			VehicleNumberTextBox.Text = "";
-			// Call service here with empty parameters to get all data
+			LoadAllRecords();
+			CameraRadarViolationsDataGrid.ItemsSource = CameraRadarViolationsList;
 		}
 
 		private void TextBoxChange(object sender, TextChangedEventArgs e)
@@ -103,28 +110,15 @@ namespace CarSystem.App.Windows
 			}
 		}
 
-		private List<CameraRadarViolationsViewModel> GetData()
+		// Use DisplayName property to visualize column names and make text centered
+		private void CameraRadarViolationsDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
 		{
-			var list = new List<CameraRadarViolationsViewModel>()
+			if (e.PropertyDescriptor is PropertyDescriptor descriptor)
 			{
-				new CameraRadarViolationsViewModel()
-				{
-					CarBrand = "Audi",
-					CardId = "12345678",
-					CarModel = "A3",
-					EGN = "123456789",
-					Name = "Imeto na chovekaaaaaaaaaaaaaaaaaaaaa"
-				},
-				new CameraRadarViolationsViewModel()
-				{
-					CarBrand = "Audi",
-					CardId = "12345678",
-					CarModel = "A3",
-					EGN = "123456789",
-					Name = "Imeto na chovekaaaaaaaaaaaaaaaaaaaaa"
-				}
-			};
-			return list;
+				e.Column.Header = descriptor.DisplayName ?? descriptor.Name;
+				e.Column.HeaderStyle = new Style(typeof(DataGridColumnHeader));
+				e.Column.HeaderStyle.Setters.Add(new Setter(HorizontalContentAlignmentProperty, HorizontalAlignment.Center));
+			}
 		}
 	}
 }
