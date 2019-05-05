@@ -7,16 +7,9 @@ using CarSystem.Data.Models.Abstract;
 
 namespace CarSystem.Data.Models
 {
-	public enum Fuels
-	{
-		Diesel,
-		Gas,
-		Petrol
-	}
-
 	public class Fuel : BaseEntity
 	{
-		public Fuels Type { get; set; }
+		public string Name { get; set; }
 
 		public ICollection<Car> Cars { get; set; }
 	}

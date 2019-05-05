@@ -21,6 +21,7 @@ namespace CarSystem.App.Infrastructure
 			builder.RegisterType<MyMenu>().AsSelf();
 			builder.RegisterType<MainWindow>().AsSelf();
 			builder.RegisterType<Violations>().AsSelf();
+			builder.RegisterType<CameraRadarViolations>().AsSelf();
 
 			// Register Database context
 			builder.RegisterType<CarSystemDbContext>().AsSelf();

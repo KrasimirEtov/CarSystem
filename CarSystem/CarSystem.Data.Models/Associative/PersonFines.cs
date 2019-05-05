@@ -13,6 +13,8 @@ namespace CarSystem.Data.Models.Associative
 
 		public DateTime LicenceBackOn { get; set; }
 
+		public string FineNumber { get; set; }
+
 		public int PersonId { get; set; }
 		public int FineId { get; set; }
 

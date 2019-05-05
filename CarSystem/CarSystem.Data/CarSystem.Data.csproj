@@ -49,9 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarSystemDbContext.cs" />
-    <Compile Include="Migrations\201905041750465_InitialSetup.cs" />
-    <Compile Include="Migrations\201905041750465_InitialSetup.Designer.cs">
-      <DependentUpon>201905041750465_InitialSetup.cs</DependentUpon>
+    <Compile Include="Migrations\201905051301189_InitialSetup.cs" />
+    <Compile Include="Migrations\201905051301189_InitialSetup.Designer.cs">
+      <DependentUpon>201905051301189_InitialSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,8 +67,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905041750465_InitialSetup.resx">
-      <DependentUpon>201905041750465_InitialSetup.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905051301189_InitialSetup.resx">
+      <DependentUpon>201905051301189_InitialSetup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

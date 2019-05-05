@@ -29,18 +29,25 @@ namespace CarSystem.App.Windows
 			InitializeComponent();
 		}
 
-		private void HomeScreenButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+		private void PreviousButton_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			var myMenu = container.Resolve<MyMenu>();
+			this.Close();
+			myMenu.ShowDialog();
+		}
+
+		private void HomeScreenButton_Click(object sender, RoutedEventArgs e)
 		{
 			var startupWindow = container.Resolve<MainWindow>();
 			this.Close();
 			startupWindow.ShowDialog();
 		}
 
-		private void PreviousButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+		private void CameraRadarTile_Click(object sender, RoutedEventArgs e)
 		{
-			var myMenu = container.Resolve<MyMenu>();
+			var startupWindow = container.Resolve<CameraRadarViolations>();
 			this.Close();
-			myMenu.ShowDialog();
+			startupWindow.ShowDialog();
 		}
 	}
 }

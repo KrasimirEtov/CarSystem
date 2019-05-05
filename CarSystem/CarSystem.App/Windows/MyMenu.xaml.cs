@@ -16,18 +16,18 @@ namespace CarSystem.App.Windows
 			InitializeComponent();
 		}
 
-		private void PreviousButton_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-		{
-			var startupWindow = container.Resolve<MainWindow>();
-			this.Close();
-			startupWindow.ShowDialog();
-		}
-
 		private void ViolationsTile_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
 			var violationsWindow = container.Resolve<Violations>();
 			this.Close();
 			violationsWindow.ShowDialog();
+		}
+
+		private void PreviousButton_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			var startupWindow = container.Resolve<MainWindow>();
+			this.Close();
+			startupWindow.ShowDialog();
 		}
 	}
 }

@@ -7,15 +7,9 @@ using CarSystem.Data.Models.Abstract;
 
 namespace CarSystem.Data.Models
 {
-	public enum Genders
-	{
-		Male,
-		Female
-	}
-
 	public class Gender : BaseEntity
 	{
-		public Genders Type { get; set; }
+		public string Name { get; set; }
 
 		public ICollection<Person> Persons { get; set; }
 	}

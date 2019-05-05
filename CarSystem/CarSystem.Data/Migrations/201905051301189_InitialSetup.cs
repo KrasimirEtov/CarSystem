@@ -32,7 +32,7 @@ namespace CarSystem.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Type = c.Int(nullable: false),
+                        Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -41,7 +41,7 @@ namespace CarSystem.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Type = c.Int(nullable: false),
+                        Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -79,7 +79,7 @@ namespace CarSystem.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Type = c.Int(nullable: false),
+                        Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -90,6 +90,7 @@ namespace CarSystem.Data.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         LicenceBackOn = c.DateTime(nullable: false),
+                        FineNumber = c.String(),
                         PersonId = c.Int(nullable: false),
                         FineId = c.Int(nullable: false),
                     })
@@ -104,7 +105,7 @@ namespace CarSystem.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Type = c.Int(nullable: false),
+                        Name = c.String(),
                         Violation = c.String(),
                     })
                 .PrimaryKey(t => t.Id);

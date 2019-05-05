@@ -20,7 +20,9 @@
 		</Grid.RowDefinitions>
 
 		<Rectangle Grid.Row="0" Fill="GhostWhite" />
-		<Image x:Name="PreviousButton" Source="/CarSystem.App;component/Images/Previous.png" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="45" Width="52" Margin="10,5,0,0" VerticalAlignment="Top" MouseLeftButtonDown="PreviousButton_MouseLeftButtonDown" Cursor="Hand" ToolTip="Върни се към предишният екран" Grid.RowSpan="2"/>
+		<Button x:Name="PreviousButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="50" Cursor="Hand" ToolTip="Върни се към предишният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="48" Click="PreviousButton_Click">
+			<Image Source="/CarSystem.App;component/Images/Previous.png" Height="36" Width="40" />
+		</Button>
 		<TextBlock HorizontalAlignment="Center" Margin="404,12,679.8,10.6" TextWrapping="Wrap" Text="Изберете опция от наличните" VerticalAlignment="Center" Height="27" Width="281" FontSize="20"/>
 
 		<Controls:Tile x:Name="ViolationsTile" Grid.Column="0" Grid.Row="1" Margin="10,10,680,10" Title="Нарушения" Opacity="0.95" TitleFontSize="18" Cursor="Hand" Height="Auto" Width="675" Click="ViolationsTile_Click">
@@ -34,5 +36,6 @@
 		<Controls:Tile x:Name="RegistrationsTile" Grid.Column="0" Grid.Row="3" Margin="10,10,680,10" Title="Регистрации" Opacity="0.95" TitleFontSize="18" Cursor="Hand" Height="Auto" Width="675">
 			<Image Source="/CarSystem.App;component/Images/Registrations.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="105"/>
 		</Controls:Tile>
+
 	</Grid>
 </Controls:MetroWindow>

@@ -20,11 +20,15 @@
 		</Grid.RowDefinitions>
 
 		<Rectangle Grid.Row="0" Fill="GhostWhite" />
-		<Image x:Name="PreviousButton" Source="/CarSystem.App;component/Images/Previous.png" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="45" Width="52" Margin="10,5,0,0" VerticalAlignment="Top" MouseLeftButtonDown="PreviousButton_MouseLeftButtonDown" Cursor="Hand" ToolTip="Върни се към предишният екран" Grid.RowSpan="2"/>
-		<Image x:Name="HomeScreenButton" Source="/CarSystem.App;component/Images/HomeScreen.png" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="42" Margin="67,5,0,0" VerticalAlignment="Top" MouseLeftButtonDown="HomeScreenButton_MouseLeftButtonDown" Cursor="Hand" ToolTip="Върни се към началният екран"/>
+		<Button x:Name="PreviousButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Width="50" Cursor="Hand" ToolTip="Върни се към предишният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="48" Click="PreviousButton_Click">
+			<Image Source="/CarSystem.App;component/Images/Previous.png" Height="36" Width="40" />
+		</Button>
+		<Button x:Name="HomeScreenButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="60,2,0,0" VerticalAlignment="Top" Width="50" Cursor="Hand" ToolTip="Върни се към началният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="48" Click="HomeScreenButton_Click">
+			<Image Source="/CarSystem.App;component/Images/HomeScreen.png" Height="36" Width="40" />
+		</Button>
 		<TextBlock HorizontalAlignment="Center" Margin="387,12,906.4,10.6" Grid.Row="0" TextWrapping="Wrap" Text="Изберете нарушение" VerticalAlignment="Center" Height="27" Width="197" FontSize="20"/>
 
-		<Controls:Tile x:Name="CameraRadarTile" Grid.Row="1" Margin="10,18,1210,10" Height="Auto" Width="270" Title="Засечени от камери" Opacity="0.95" TitleFontSize="18" Cursor="Hand">
+		<Controls:Tile x:Name="CameraRadarTile" Grid.Row="1" Margin="10,18,1210,10" Height="Auto" Width="270" Title="Засечени от камери" Opacity="0.95" TitleFontSize="18" Cursor="Hand" Click="CameraRadarTile_Click">
 			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="Auto" Height="135"/>
 		</Controls:Tile>
 

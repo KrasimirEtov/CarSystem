@@ -8,17 +8,9 @@ using CarSystem.Data.Models.Associative;
 
 namespace CarSystem.Data.Models
 {
-	public enum Fines
-	{
-		SpeedLimit,
-		NonCompliance,
-		Tyres,
-		Equipment,
-		Custom
-	}
 	public class Fine : BaseEntity
 	{
-		public Fines Type { get; set; }
+		public string Name { get; set; }
 
 		public string Violation { get; set; }
 
