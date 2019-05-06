@@ -52,5 +52,17 @@ namespace CarSystem.Services
 
 			return personFines.ToListAsync();
 		}
+
+		public async Task DeletePersonFineAsync(int personFineId)
+		{
+			var dbRecord = await this.context.PersonFines
+				.FirstOrDefaultAsync(x => x.Id == personFineId);
+			if (dbRecord != null)
+			{
+				this.context.PersonFines.Remove(dbRecord);
+			}
+
+			await this.context.SaveChangesAsync();
+		}
 	}
 }

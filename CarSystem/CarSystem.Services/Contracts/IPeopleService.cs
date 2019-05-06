@@ -9,6 +9,6 @@ namespace CarSystem.Services.Contracts
 {
 	public interface IPeopleService
 	{
-		Person GetPersonAsync(int id);
+		Task<List<Person>> GetAllPersonsAsync();
 	}
 }

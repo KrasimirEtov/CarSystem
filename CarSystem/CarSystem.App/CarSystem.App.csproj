@@ -88,13 +88,19 @@
     </ApplicationDefinition>
     <Compile Include="Infrastructure\CarSystemConstants.cs" />
     <Compile Include="Infrastructure\ContainerConfiguration.cs" />
+    <Compile Include="Infrastructure\Helpers\ModelHandler.cs" />
     <Compile Include="Infrastructure\ProviderMappingProfile.cs" />
     <Compile Include="Models\CameraRadarViolationsViewModel.cs" />
+    <Compile Include="Models\CarViewModel.cs" />
+    <Compile Include="Models\CreateViolationViewModel.cs" />
+    <Compile Include="Models\FineViewModel.cs" />
+    <Compile Include="Models\PersonViewModel.cs" />
+    <Compile Include="Models\ViolationViewModel.cs" />
     <Compile Include="Windows\CameraRadarViolations.xaml.cs">
       <DependentUpon>CameraRadarViolations.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Forms\CreateCameraRadarViolation.xaml.cs">
-      <DependentUpon>CreateCameraRadarViolation.xaml</DependentUpon>
+    <Compile Include="Windows\Forms\CreateViolation.xaml.cs">
+      <DependentUpon>CreateViolation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MyMenu.xaml.cs">
       <DependentUpon>MyMenu.xaml</DependentUpon>
@@ -118,7 +124,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Forms\CreateCameraRadarViolation.xaml">
+    <Page Include="Windows\Forms\CreateViolation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

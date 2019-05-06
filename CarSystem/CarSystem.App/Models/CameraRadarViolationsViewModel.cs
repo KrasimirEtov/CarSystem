@@ -10,12 +10,36 @@ namespace CarSystem.App.Models
 {
 	public class CameraRadarViolationsViewModel : INotifyPropertyChanged
 	{
+		private int personFineId;
+		private string finePrice;
 		private string name;
 		private string egn;
 		private string cardId;
 		private string carBrand;
 		private string carModel;
 		private string carNumber;
+
+		[DisplayName("№")]
+		public int PersonFineId
+		{
+			get { return this.personFineId; }
+			set
+			{
+				this.personFineId = value;
+				NotifyPropertyChanged();
+			}
+		}
+
+		[DisplayName("глоба")]
+		public string FinePrice
+		{
+			get { return this.finePrice; }
+			set
+			{
+				this.finePrice = value;
+				NotifyPropertyChanged();
+			}
+		}
 
 		[DisplayName("Име")]
 		public string Name
@@ -39,7 +63,7 @@ namespace CarSystem.App.Models
 			}
 		}
 
-		[DisplayName("Лична карта")]
+		[DisplayName("№ л. карта")]
 		public string CardId
 		{
 			get { return this.cardId; }

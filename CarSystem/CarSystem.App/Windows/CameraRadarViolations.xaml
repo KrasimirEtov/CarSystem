@@ -50,12 +50,16 @@
 		<Button x:Name="FilterButton" Content="Филтрирай" HorizontalAlignment="Left" Margin="10,104.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="421" Height="37" Cursor="Hand" Click="FilterButton_Click" IsEnabled="False"/>
 		<Button x:Name="ClearFiltersButton" Content="Изчисти филтрите" HorizontalAlignment="Left" Margin="460,104.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="320" Height="37" Cursor="Hand" Click="ClearFiltersButton_Click"/>
 
-		<DataGrid x:Name="CameraRadarViolationsDataGrid" ItemsSource="{Binding CameraRadarViolationsList}" AutoGenerateColumns="True" AutoGeneratingColumn="CameraRadarViolationsDataGrid_AutoGeneratingColumn" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="False" Block.TextAlignment="Center" Grid.Row="2" Margin="0,0.4,696.4,-187.6" ColumnWidth="*" RowHeight="40" Width="Auto" MaxWidth="650" Height="Auto" MaxHeight="800" Cursor="Hand">
-
+		<DataGrid x:Name="CameraRadarViolationsDataGrid" ItemsSource="{Binding CameraRadarViolationsViewModels}" AutoGenerateColumns="True" AutoGeneratingColumn="CameraRadarViolationsDataGrid_AutoGeneratingColumn" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="False" Grid.Row="2" Margin="0,0.4,696.4,-187.6" ColumnWidth="*" RowHeight="40" Width="Auto" MaxWidth="650" Height="Auto" MaxHeight="800" Cursor="Hand" PreviewMouseRightButtonDown="DisableContextMenuOnDgHeaders_PreviewMouseRightButtonDown">
+			<DataGrid.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Изтрий" Click="DeleteItem_Click" Cursor="Hand" />
+				</ContextMenu>
+			</DataGrid.ContextMenu>
 		</DataGrid>
 
 		<Controls:Flyout x:Name="HamburgerMenuFlyout" Margin="460,0,696.4,-197.6" Grid.RowSpan="3" Width="334" Opacity="0.9" Visibility="Hidden" Cursor="Hand" Position="Right" Header="Операции" FontSize="16" Background="#FFEEEEEE" Foreground="#FF050505" Theme="Light" AnimateOpacity="True">
-			
+
 			<Canvas>
 				<Button x:Name="CreateButton" Content="Създай нов запис" HorizontalAlignment="Left" Width="314" Height="140" Canvas.Left="10" Canvas.Top="10" Cursor="Hand" FontSize="16" Click="CreateButton_Click"/>
 			</Canvas>

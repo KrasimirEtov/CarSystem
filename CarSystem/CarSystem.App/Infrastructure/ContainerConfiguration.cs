@@ -25,7 +25,7 @@ namespace CarSystem.App.Infrastructure
 			builder.RegisterType<CameraRadarViolations>().AsSelf();
 
 			// Register form windows
-			builder.RegisterType<CreateCameraRadarViolation>().AsSelf();
+			builder.RegisterType<CreateViolation>().AsSelf();
 
 			// Register Database context
 			builder.RegisterType<CarSystemDbContext>().AsSelf();

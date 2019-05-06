@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +19,10 @@ namespace CarSystem.Services
 			this.context = context;
 		}
 
-		public Person GetPersonAsync(int id)
+		public Task<List<Person>> GetAllPersonsAsync()
 		{
-			return new Person();
+			return this.context.People
+				.ToListAsync();
 		}
 	}
 }

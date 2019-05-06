@@ -17,11 +17,13 @@ using System.Windows.Shapes;
 using Autofac;
 using AutoMapper;
 using CarSystem.App.Infrastructure;
+using CarSystem.App.Infrastructure.Helpers;
 using CarSystem.App.Models;
 using CarSystem.App.Windows.Forms;
 using CarSystem.Data.Models.Associative;
 using CarSystem.Services.Contracts;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace CarSystem.App.Windows
 {
@@ -32,22 +34,23 @@ namespace CarSystem.App.Windows
 	{
 		Autofac.IContainer container = ContainerConfiguration.GetContainer();
 
-		public ObservableCollection<CameraRadarViolationsViewModel> CameraRadarViolationsList { get; set; }
+		public ObservableCollection<CameraRadarViolationsViewModel> CameraRadarViolationsViewModels { get; set; }
 
 		public CameraRadarViolations()
 		{
-			CameraRadarViolationsList = new ObservableCollection<CameraRadarViolationsViewModel>();
+			CameraRadarViolationsViewModels = new ObservableCollection<CameraRadarViolationsViewModel>();
 			InitializeComponent();
 			LoadAllRecords();
-			CameraRadarViolationsDataGrid.ItemsSource = CameraRadarViolationsList;
+			CameraRadarViolationsDataGrid.ItemsSource = CameraRadarViolationsViewModels;
 		}
 
 		private void LoadAllRecords()
 		{
 			var personFinesService = container.Resolve<IPersonFinesService>();
-			var dbModels = personFinesService.GetFilteredPersonFinesAsync(CarSystemConstants.CameraViolationName).Result;
+			var dbRecords = personFinesService.GetFilteredPersonFinesAsync(CarSystemConstants.CameraViolationName).Result;
 
-			ProcessDbModels(dbModels);
+			var observableDtoModels = ModelHandler.PersonFinesToObservableDto(dbRecords);
+			ModelHandler.ProcessObservableDtoModels(CameraRadarViolationsViewModels, observableDtoModels);
 		}
 
 		private void PreviousButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -66,12 +69,12 @@ namespace CarSystem.App.Windows
 
 		private void FilterButton_Click(object sender, RoutedEventArgs e)
 		{
-			// Call service and pass filter parameters to get filtered results here
 			var personFinesService = container.Resolve<IPersonFinesService>();
 
-			var dbModels = personFinesService.GetFilteredPersonFinesAsync(CarSystemConstants.CameraViolationName, CardIdTextBox.Text, EGNTextBox.Text, VehicleNumberTextBox.Text, FineNumberTextBox.Text).Result;
+			var dbRecords = personFinesService.GetFilteredPersonFinesAsync(CarSystemConstants.CameraViolationName, CardIdTextBox.Text, EGNTextBox.Text, VehicleNumberTextBox.Text, FineNumberTextBox.Text).Result;
 
-			ProcessDbModels(dbModels);
+			var observableDtoModels = ModelHandler.PersonFinesToObservableDto(dbRecords);
+			ModelHandler.ProcessObservableDtoModels(CameraRadarViolationsViewModels, observableDtoModels);
 		}
 
 		private void ClearFiltersButton_Click(object sender, RoutedEventArgs e)
@@ -102,8 +105,8 @@ namespace CarSystem.App.Windows
 			if (e.PropertyDescriptor is PropertyDescriptor descriptor)
 			{
 				e.Column.Header = descriptor.DisplayName ?? descriptor.Name;
-				e.Column.HeaderStyle = new Style(typeof(DataGridColumnHeader));
-				e.Column.HeaderStyle.Setters.Add(new Setter(HorizontalContentAlignmentProperty, HorizontalAlignment.Center));
+				//e.Column.HeaderStyle = new Style(typeof(DataGridColumnHeader));
+				//e.Column.HeaderStyle.Setters.Add(new Setter(HorizontalContentAlignmentProperty, HorizontalAlignment.Center));
 			}
 		}
 
@@ -112,24 +115,59 @@ namespace CarSystem.App.Windows
 			HamburgerMenuFlyout.IsOpen = true;
 		}
 
-		private void ProcessDbModels(List<PersonFines> dbModels)
-		{
-			var dtoModels = dbModels.Select(x => Mapper.Map<CameraRadarViolationsViewModel>(x)).ToList();
-			var observableDtoModels = new ObservableCollection<CameraRadarViolationsViewModel>(dtoModels);
-
-			CameraRadarViolationsList.Clear();
-
-			foreach (var item in observableDtoModels)
-			{
-				CameraRadarViolationsList.Add(item);
-			}
-		}
-
 		private void CreateButton_Click(object sender, RoutedEventArgs e)
 		{
-			var myMenu = container.Resolve<CreateCameraRadarViolation>();
+			var myMenu = container.Resolve<CreateViolation>();
 			
 			myMenu.ShowDialog();
+		}
+
+		private async void DeleteItem_Click(object sender, RoutedEventArgs e)
+		{
+			var rowData = CameraRadarViolationsDataGrid.SelectedItem as CameraRadarViolationsViewModel;
+			this.Cursor = Cursors.Hand;
+			var result = await this.ShowMessageAsync("Сигурни ли сте?", "Записът ще бъде изтрит от системата!", MessageDialogStyle.AffirmativeAndNegative, MetroDialogOptions = new MetroDialogSettings()
+			{
+				AffirmativeButtonText = "Да",
+				AnimateHide = true,
+				AnimateShow = true,
+				NegativeButtonText = "Не",
+				DefaultButtonFocus = MessageDialogResult.Affirmative,
+				DialogResultOnCancel = MessageDialogResult.Canceled,
+			});
+
+			if (result == MessageDialogResult.Affirmative)
+			{
+				var service = container.Resolve<IPersonFinesService>();
+				await service.DeletePersonFineAsync(rowData.PersonFineId);
+				CameraRadarViolationsViewModels.Remove(rowData);
+			}
+			this.Cursor = Cursors.Arrow;
+		}
+
+		// Disable contextMenu in data grid headers
+		private void DisableContextMenuOnDgHeaders_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+		{
+			DependencyObject DepObject = (DependencyObject)e.OriginalSource;
+
+			while ((DepObject != null) && !(DepObject is DataGridColumnHeader) && !(DepObject is DataGridRow))
+			{
+				DepObject = VisualTreeHelper.GetParent(DepObject);
+			}
+
+			if (DepObject == null)
+			{
+				return;
+			}
+
+			if (DepObject is DataGridColumnHeader)
+			{
+				CameraRadarViolationsDataGrid.ContextMenu.Visibility = Visibility.Collapsed;
+			}
+			else
+			{
+				CameraRadarViolationsDataGrid.ContextMenu.Visibility = Visibility.Visible;
+			}
 		}
 	}
 }
