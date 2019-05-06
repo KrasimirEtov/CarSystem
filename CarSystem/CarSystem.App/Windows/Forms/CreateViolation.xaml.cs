@@ -40,18 +40,31 @@ namespace CarSystem.App.Windows.Forms
 			CarViewModels = new ObservableCollection<CarViewModel>();
 			FineViewModels = new ObservableCollection<FineViewModel>();
 			ViolationsViewModels = new ObservableCollection<ViolationViewModel>();
-			LoadPersonViewModels();
 			InitializeComponent();
+			LoadPersonViewModels();
+
+			PersonPickerButton.ItemsSource = PersonViewModels;
+			CarPickerButton.ItemsSource = CarViewModels;
 		}
 
 		private void LoadPersonViewModels()
 		{
-			var personFinesService = container.Resolve<IPeopleService>();
-			var dbRecords = personFinesService.GetAllPersonsAsync().Result;
+			var peopleService = container.Resolve<IPeopleService>();
+			var dbRecords = peopleService.GetAllPersonsAsync().Result;
 
 			var observableDtoModels = ModelHandler.PersonToObservableDto(dbRecords);
 
 			ModelHandler.ProcessObservableDtoModels(PersonViewModels, observableDtoModels);
+		}
+
+		private void LoadCarViewModels(int personId)
+		{
+			var carService = container.Resolve<ICarService>();
+			var dbRecords = carService.GetPersonCarsAsync(personId).Result;
+
+			var observableDtoModels = ModelHandler.CarToObservableDto(dbRecords);
+
+			ModelHandler.ProcessObservableDtoModels(CarViewModels, observableDtoModels);
 		}
 
 		private async void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -92,6 +105,25 @@ namespace CarSystem.App.Windows.Forms
 				this.Close();
 			}
 			this.Cursor = Cursors.Arrow;
+		}
+
+		private void ClearButton_Click(object sender, RoutedEventArgs e)
+		{
+			PersonPickerButton.SelectedItem = null;
+			CarPickerLabel.Visibility = Visibility.Hidden;
+			CarPickerButton.Visibility = Visibility.Hidden;
+		}
+
+		private void PersonPickerButton_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			CarPickerLabel.Visibility = Visibility.Visible;
+			CarPickerButton.Visibility = Visibility.Visible;
+			var personViewModel = PersonPickerButton.SelectedItem as PersonViewModel;
+
+			if (personViewModel != null)
+			{
+				LoadCarViewModels(personViewModel.Id);
+			}
 		}
 	}
 }

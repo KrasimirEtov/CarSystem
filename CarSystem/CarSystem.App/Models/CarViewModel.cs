@@ -14,6 +14,7 @@ namespace CarSystem.App.Models
 		private string brand;
 		private string model;
 		private string number;
+		private string displayName;
 
 		public int Id
 		{
@@ -51,6 +52,16 @@ namespace CarSystem.App.Models
 			set
 			{
 				this.number = value;
+				NotifyPropertyChanged();
+			}
+		}
+
+		public string DisplayName
+		{
+			get { return this.displayName; }
+			set
+			{
+				this.displayName = value;
 				NotifyPropertyChanged();
 			}
 		}

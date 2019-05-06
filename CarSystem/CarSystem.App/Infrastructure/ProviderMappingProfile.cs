@@ -41,6 +41,7 @@ namespace CarSystem.App.Infrastructure
 				.ForMember(dest => dest.EGN, opt => opt.MapFrom(src => src.EGN))
 				.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
 				.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.FirstName + " " + src.LastName))
+				.ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.FirstName + " " + src.LastName + " - " + src.EGN))
 				.ForAllOtherMembers(opt => opt.Ignore());
 
 			// Fine -> FineViewModel
@@ -55,6 +56,15 @@ namespace CarSystem.App.Infrastructure
 				.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
 				.ForMember(dest => dest.Message, opt => opt.MapFrom(src => src.Message))
 				.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+				.ForAllOtherMembers(opt => opt.Ignore());
+
+			// Car -> CarViewModel
+			CreateMap<Car, CarViewModel>()
+				.ForMember(dest => dest.Brand, opt => opt.MapFrom(src => src.Brand))
+				.ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.Brand + " " + src.Model + " - " + src.Number))
+				.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+				.ForMember(dest => dest.Model, opt => opt.MapFrom(src => src.Model))
+				.ForMember(dest => dest.Number, opt => opt.MapFrom(src => src.Number))
 				.ForAllOtherMembers(opt => opt.Ignore());
 		}
 	}

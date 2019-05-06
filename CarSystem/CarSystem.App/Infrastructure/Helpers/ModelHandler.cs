@@ -27,6 +27,13 @@ namespace CarSystem.App.Infrastructure.Helpers
 			return new ObservableCollection<PersonViewModel>(dtoModels);
 		}
 
+		public static ObservableCollection<CarViewModel> CarToObservableDto(List<Car> dbRecords)
+		{
+			var dtoModels = dbRecords.Select(x => Mapper.Map<CarViewModel>(x)).ToList();
+
+			return new ObservableCollection<CarViewModel>(dtoModels);
+		}
+
 		public static void ProcessObservableDtoModels<T>(ObservableCollection<T> toModify, ObservableCollection<T> source)
 		{
 			toModify.Clear();

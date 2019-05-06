@@ -13,6 +13,7 @@ namespace CarSystem.App.Models
 		private int id;
 		private string name;
 		private string egn;
+		private string displayName;
 
 		public int Id
 		{
@@ -40,6 +41,16 @@ namespace CarSystem.App.Models
 			set
 			{
 				this.egn = value;
+				NotifyPropertyChanged();
+			}
+		}
+
+		public string DisplayName
+		{
+			get { return this.displayName; }
+			set
+			{
+				this.displayName = value;
 				NotifyPropertyChanged();
 			}
 		}

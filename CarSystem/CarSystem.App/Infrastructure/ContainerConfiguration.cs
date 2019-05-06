@@ -33,6 +33,7 @@ namespace CarSystem.App.Infrastructure
 			// Register services
 			builder.RegisterType<PeopleService>().As<IPeopleService>();
 			builder.RegisterType<PersonFinesService>().As<IPersonFinesService>();
+			builder.RegisterType<CarService>().As<ICarService>();
 
 			return builder.Build();
 		}
