@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CarSystem.App.Models
 {
-	public class CameraRadarViolationsViewModel : INotifyPropertyChanged
+	public class ViolationsViewModel : INotifyPropertyChanged
 	{
 		private int personFineId;
 		private string finePrice;

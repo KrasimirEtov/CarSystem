@@ -21,8 +21,8 @@ namespace CarSystem.App.Infrastructure
 			// Register windows
 			builder.RegisterType<MyMenu>().AsSelf();
 			builder.RegisterType<MainWindow>().AsSelf();
+			builder.RegisterType<ViolationsNOTUSED>().AsSelf(); // Use this for registering db records window
 			builder.RegisterType<Violations>().AsSelf();
-			builder.RegisterType<CameraRadarViolations>().AsSelf();
 
 			// Register form windows
 			builder.RegisterType<CreateViolation>().AsSelf();

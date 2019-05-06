@@ -90,7 +90,7 @@ namespace CarSystem.App.Windows.Forms
 		private async void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
 			this.Cursor = Cursors.Hand;
-			var result = await this.ShowMessageAsync("Сигурни ли сте?", "Ако излезете сега, записът няма да бъде добавен в системата ни!", MessageDialogStyle.AffirmativeAndNegative, MetroDialogOptions = new MetroDialogSettings()
+			var result = await this.ShowMessageAsync("Сигурни ли сте?", "Ако излезете сега, записът няма да бъде добавен в системата!", MessageDialogStyle.AffirmativeAndNegative, MetroDialogOptions = new MetroDialogSettings()
 			{
 				AffirmativeButtonText = "Да",
 				AnimateHide = true,

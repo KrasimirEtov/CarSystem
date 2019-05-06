@@ -13,11 +13,11 @@ namespace CarSystem.App.Infrastructure.Helpers
 {
 	public static class ModelHandler
 	{
-		public static ObservableCollection<CameraRadarViolationsViewModel> PersonFinesToObservableDto(List<PersonFines> dbRecords)
+		public static ObservableCollection<ViolationsViewModel> PersonFinesToObservableDto(List<PersonFines> dbRecords)
 		{
-			var dtoModels = dbRecords.Select(x => Mapper.Map<CameraRadarViolationsViewModel>(x)).ToList();
+			var dtoModels = dbRecords.Select(x => Mapper.Map<ViolationsViewModel>(x)).ToList();
 
-			return new ObservableCollection<CameraRadarViolationsViewModel>(dtoModels);
+			return new ObservableCollection<ViolationsViewModel>(dtoModels);
 		}
 
 		public static ObservableCollection<PersonViewModel> PersonToObservableDto(List<Person> dbRecords)

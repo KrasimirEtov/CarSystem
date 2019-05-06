@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CarSystem.App.Windows"
 		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Нарушения" Height="500" Width="600" Background="Gainsboro" WindowStartupLocation="CenterScreen">
+        Title="Нарушения" Height="650" Width="800" Background="Gainsboro" WindowStartupLocation="CenterScreen">
 	<Grid Opacity="0.95">
 
 		<Grid.ColumnDefinitions>
@@ -15,30 +15,56 @@
 
 		<Grid.RowDefinitions>
 			<RowDefinition Height="50"/>
-			<RowDefinition Height="220"/>
+			<RowDefinition Height="150"/>
 			<RowDefinition Height="220"/>
 		</Grid.RowDefinitions>
 
 		<Rectangle Grid.Row="0" Fill="GhostWhite" />
+
 		<Button x:Name="PreviousButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Width="42" Cursor="Hand" ToolTip="Върни се към предишният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="PreviousButton_Click">
 			<Image Source="/CarSystem.App;component/Images/Previous.png" Height="33" Width="31" />
 		</Button>
+
 		<Button x:Name="HomeScreenButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="60,6,0,0" VerticalAlignment="Top" Width="43" Cursor="Hand" ToolTip="Върни се към началният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="HomeScreenButton_Click">
 			<Image Source="/CarSystem.App;component/Images/HomeScreen.png" Height="32" Width="28" />
 		</Button>
-		<TextBlock HorizontalAlignment="Center" Margin="387,12,906.4,10.6" Grid.Row="0" TextWrapping="Wrap" Text="Изберете нарушение" VerticalAlignment="Center" Height="27" Width="197" FontSize="20"/>
 
-		<Controls:Tile x:Name="CameraRadarTile" Grid.Row="1" Margin="10,18,1210,10" Height="Auto" Width="270" Title="Засечени от камери" Opacity="0.95" TitleFontSize="18" Cursor="Hand" Click="CameraRadarTile_Click">
-			<Image Source="/CarSystem.App;component/Images/Camera.png" Width="Auto" Height="135"/>
-		</Controls:Tile>
+		<TextBlock HorizontalAlignment="Center" Margin="539,13,758.4,10.4" Grid.Row="0" TextWrapping="Wrap" Text="Списък с нарушения" VerticalAlignment="Center" Height="27" Width="193" FontSize="20"/>
 
-		<Controls:Tile x:Name="SlipsTile" Grid.Row="1" Margin="314,18,906.4,10" Height="Auto" Width="270" Title="Фишове" Opacity="0.95" TitleFontSize="18" Cursor="Hand">
-			<Image Source="/CarSystem.App;component/Images/Slips.png" Width="Auto" Height="120"/>
-		</Controls:Tile>
+		<Button x:Name="HamburgerMenuButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="737,6,0,0" VerticalAlignment="Top" Width="43" Cursor="Hand" ToolTip="Кликни за допълнителни операции" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="HamburgerMenuButton_Click">
+			<Image Source="/CarSystem.App;component/Images/HamburgerMenu.png" Height="22" Width="22" />
+		</Button>
 
-		<Controls:Tile x:Name="ActsTile" Grid.Row="2" Margin="10,10.4,906.4,40.6" Height="Auto" Width="Auto" Title="Актове" Opacity="0.95" TitleFontSize="18" Cursor="Hand">
-			<Image Source="/CarSystem.App;component/Images/Acts.png" Width="Auto" Height="135"/>
-		</Controls:Tile>
+		<Label x:Name="CardIdLabel" Content="Номер на лична карта:" HorizontalAlignment="Left" Margin="10,9.6,0,0" VerticalAlignment="Top" Grid.Row="1" FontSize="15"/>
+		<TextBox x:Name="CardIdTextBox" HorizontalAlignment="Left" Height="23" Margin="231,13.6,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи номер тук" VerticalAlignment="Top" Width="200" TextChanged="TextBoxChange"/>
+
+		<Label x:Name="VehicleNumberLabel" Content="Номер на превозно средство:" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Grid.Row="1" FontSize="15"/>
+		<TextBox x:Name="VehicleNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="231,59.6,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи номер тук" VerticalAlignment="Top" Width="200" TextChanged="TextBoxChange"/>
+
+		<Label x:Name="EGNLabel" Content="ЕГН:" HorizontalAlignment="Left" Margin="460,9.6,0,0" VerticalAlignment="Top" Grid.Row="1" FontSize="15"/>
+		<TextBox x:Name="EGNTextBox" HorizontalAlignment="Left" Height="23" Margin="580,13.6,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи ЕГН тук" VerticalAlignment="Top" Width="200" TextChanged="TextBoxChange"/>
+
+		<Label x:Name="FineNumberLabel" Content="Номер на фиш:" HorizontalAlignment="Left" Margin="460,55,0,0" VerticalAlignment="Top" Grid.Row="1" FontSize="15"/>
+		<TextBox x:Name="FineNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="580,59.6,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи номер тук" VerticalAlignment="Top" Width="200" TextChanged="TextBoxChange"/>
+
+		<Button x:Name="FilterButton" Content="Филтрирай" HorizontalAlignment="Left" Margin="10,104.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="421" Height="37" Cursor="Hand" Click="FilterButton_Click" IsEnabled="False"/>
+		<Button x:Name="ClearFiltersButton" Content="Изчисти филтрите" HorizontalAlignment="Left" Margin="460,104.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="320" Height="37" Cursor="Hand" Click="ClearFiltersButton_Click"/>
+
+		<DataGrid x:Name="ViolationsDataGrid" ItemsSource="{Binding ViolationsViewModels}" AutoGenerateColumns="True" AutoGeneratingColumn="ViolationsDataGrid_AutoGeneratingColumn" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="False" Grid.Row="2" Margin="0,0.4,696.4,-187.6" ColumnWidth="*" RowHeight="40" Width="Auto" MaxWidth="650" Height="Auto" MaxHeight="800" Cursor="Hand" PreviewMouseRightButtonDown="DisableContextMenuOnDgHeaders_PreviewMouseRightButtonDown">
+			<DataGrid.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Изтрий" Click="DeleteItem_Click" Cursor="Hand" />
+				</ContextMenu>
+			</DataGrid.ContextMenu>
+		</DataGrid>
+
+		<Controls:Flyout x:Name="HamburgerMenuFlyout" Margin="460,0,696.4,-197.6" Grid.RowSpan="3" Width="334" Opacity="0.9" Visibility="Hidden" Cursor="Hand" Position="Right" Header="Операции" FontSize="16" Background="#FFEEEEEE" Foreground="#FF050505" Theme="Light" AnimateOpacity="True">
+
+			<Canvas>
+				<Button x:Name="CreateButton" Content="Създай нов запис" HorizontalAlignment="Left" Width="314" Height="140" Canvas.Left="10" Canvas.Top="10" Cursor="Hand" FontSize="16" Click="CreateButton_Click"/>
+			</Canvas>
+
+		</Controls:Flyout>
 
 	</Grid>
 </Controls:MetroWindow>
