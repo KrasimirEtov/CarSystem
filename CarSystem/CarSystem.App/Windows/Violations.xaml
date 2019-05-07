@@ -47,8 +47,8 @@
 		<Label x:Name="FineNumberLabel" Content="Номер на фиш:" HorizontalAlignment="Left" Margin="460,55,0,0" VerticalAlignment="Top" Grid.Row="1" FontSize="15"/>
 		<TextBox x:Name="FineNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="580,59.6,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи номер тук" VerticalAlignment="Top" Width="200" TextChanged="TextBoxChange"/>
 
-		<Button x:Name="FilterButton" Content="Филтрирай" HorizontalAlignment="Left" Margin="10,104.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="421" Height="37" Cursor="Hand" Click="FilterButton_Click" IsEnabled="False"/>
-		<Button x:Name="ClearFiltersButton" Content="Изчисти филтрите" HorizontalAlignment="Left" Margin="460,104.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="320" Height="37" Cursor="Hand" Click="ClearFiltersButton_Click"/>
+		<Button x:Name="FilterButton" Content="Филтрирай" HorizontalAlignment="Left" Margin="359,104.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="216" Height="37" Cursor="Hand" Click="FilterButton_Click" IsEnabled="False"/>
+		<Button x:Name="ClearFiltersButton" Content="Изчисти филтрите" HorizontalAlignment="Left" Margin="580,104.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" Height="37" Cursor="Hand" Click="ClearFiltersButton_Click"/>
 
 		<DataGrid x:Name="ViolationsDataGrid" ItemsSource="{Binding ViolationsViewModels}" AutoGenerateColumns="True" AutoGeneratingColumn="ViolationsDataGrid_AutoGeneratingColumn" CanUserAddRows="False" CanUserResizeColumns="False" CanUserSortColumns="False" Grid.Row="2" Margin="0,0.4,696.4,-187.6" ColumnWidth="*" RowHeight="40" Width="Auto" MaxWidth="650" Height="Auto" MaxHeight="800" Cursor="Hand" PreviewMouseRightButtonDown="DisableContextMenuOnDgHeaders_PreviewMouseRightButtonDown">
 			<DataGrid.ContextMenu>
@@ -58,13 +58,18 @@
 			</DataGrid.ContextMenu>
 		</DataGrid>
 
-		<Controls:Flyout x:Name="HamburgerMenuFlyout" Margin="460,0,696.4,-197.6" Grid.RowSpan="3" Width="334" Opacity="0.9" Visibility="Hidden" Cursor="Hand" Position="Right" Header="Операции" FontSize="16" Background="#FFEEEEEE" Foreground="#FF050505" Theme="Light" AnimateOpacity="True">
+		<Controls:Flyout x:Name="HamburgerMenuFlyout" Margin="460,0,696.4,-197.6" Grid.RowSpan="3" Width="334" Opacity="0.9" Visibility="Hidden" Cursor="Hand" Position="Right" Header="Опции" FontSize="16" Background="#FFEEEEEE" Foreground="#FF050505" Theme="Light" AnimateOpacity="True">
 
 			<Canvas>
-				<Button x:Name="CreateButton" Content="Създай нов запис" HorizontalAlignment="Left" Width="314" Height="140" Canvas.Left="10" Canvas.Top="10" Cursor="Hand" FontSize="16" Click="CreateButton_Click"/>
+				<Button x:Name="CreateButton" Content="Добави ново нарушение" HorizontalAlignment="Left" Width="314" Height="140" Canvas.Left="10" Canvas.Top="10" Cursor="Hand" FontSize="16" Click="CreateButton_Click"/>
 			</Canvas>
 
 		</Controls:Flyout>
+		
+		<Label x:Name="ViolationPickerLabel" Content="Вид на нарушението:" HorizontalAlignment="Left" Margin="10,104.6,0,0" VerticalAlignment="Top" Grid.Row="1" FontSize="15"/>
+
+		<Controls:SplitButton x:Name="ViolationPickerButton" ItemsSource="{Binding ViolationsViewModel}" DisplayMemberPath="Message" SelectionChanged="ViolationPickerButton_SelectionChanged" Margin="165,104.6,1136.4,9.6" Grid.Row="1"/>
+
 
 	</Grid>
 </Controls:MetroWindow>

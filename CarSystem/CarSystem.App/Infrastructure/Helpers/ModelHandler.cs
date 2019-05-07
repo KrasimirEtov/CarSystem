@@ -43,5 +43,19 @@ namespace CarSystem.App.Infrastructure.Helpers
 				toModify.Add(item);
 			}
 		}
+
+		public static ObservableCollection<ViolationViewModel> ViolationsToObservableDto(List<Violation> dbRecords)
+		{
+			var dtoModels = dbRecords.Select(x => Mapper.Map<ViolationViewModel>(x)).ToList();
+
+			return new ObservableCollection<ViolationViewModel>(dtoModels);
+		}
+
+		public static ObservableCollection<FineViewModel>FinesToObservableDto(List<Fine> dbRecords)
+		{
+			var dtoModels = dbRecords.Select(x => Mapper.Map<FineViewModel>(x)).ToList();
+
+			return new ObservableCollection<FineViewModel>(dtoModels);
+		}
 	}
 }

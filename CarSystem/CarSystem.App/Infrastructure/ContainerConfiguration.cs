@@ -34,6 +34,8 @@ namespace CarSystem.App.Infrastructure
 			builder.RegisterType<PeopleService>().As<IPeopleService>();
 			builder.RegisterType<PersonFinesService>().As<IPersonFinesService>();
 			builder.RegisterType<CarService>().As<ICarService>();
+			builder.RegisterType<ViolationService>().As<IViolationService>();
+			builder.RegisterType<FineService>().As<IFineService>();
 
 			return builder.Build();
 		}

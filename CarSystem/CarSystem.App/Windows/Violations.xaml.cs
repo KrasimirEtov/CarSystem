@@ -36,21 +36,36 @@ namespace CarSystem.App.Windows
 
 		public ObservableCollection<ViolationsViewModel> ViolationsViewModels { get; set; }
 
+		public ObservableCollection<ViolationViewModel> ViolationsViewModel { get; set; }
+
+
 		public Violations()
 		{
 			ViolationsViewModels = new ObservableCollection<ViolationsViewModel>();
+			ViolationsViewModel = new ObservableCollection<ViolationViewModel>();
 			InitializeComponent();
-			LoadAllRecords();
+			LoadViolationsViewModels();
+			LoadViolationsViewModel();
 			ViolationsDataGrid.ItemsSource = ViolationsViewModels;
+			ViolationPickerButton.ItemsSource = ViolationsViewModel;
 		}
 
-		private void LoadAllRecords()
+		private void LoadViolationsViewModels()
 		{
 			var personFinesService = container.Resolve<IPersonFinesService>();
-			var dbRecords = personFinesService.GetFilteredPersonFinesAsync(CarSystemConstants.CameraViolationName).Result;
+			var dbRecords = personFinesService.GetFilteredPersonFinesAsync().Result;
 
 			var observableDtoModels = ModelHandler.PersonFinesToObservableDto(dbRecords);
 			ModelHandler.ProcessObservableDtoModels(ViolationsViewModels, observableDtoModels);
+		}
+
+		private void LoadViolationsViewModel()
+		{
+			var violationService = container.Resolve<IViolationService>();
+			var dbRecords = violationService.GetAllViolationsAsync().Result;
+
+			var observableDtoModels = ModelHandler.ViolationsToObservableDto(dbRecords);
+			ModelHandler.ProcessObservableDtoModels(ViolationsViewModel, observableDtoModels);
 		}
 
 		private void PreviousButton_Click(object sender, RoutedEventArgs e)
@@ -71,7 +86,9 @@ namespace CarSystem.App.Windows
 		{
 			var personFinesService = container.Resolve<IPersonFinesService>();
 
-			var dbRecords = personFinesService.GetFilteredPersonFinesAsync(CarSystemConstants.CameraViolationName, CardIdTextBox.Text, EGNTextBox.Text, VehicleNumberTextBox.Text, FineNumberTextBox.Text).Result;
+			var violationViewModel = ViolationPickerButton.SelectedItem as ViolationViewModel;
+
+			var dbRecords = personFinesService.GetFilteredPersonFinesAsync(violationViewModel.Name, CardIdTextBox.Text, EGNTextBox.Text, VehicleNumberTextBox.Text, FineNumberTextBox.Text).Result;
 
 			var observableDtoModels = ModelHandler.PersonFinesToObservableDto(dbRecords);
 			ModelHandler.ProcessObservableDtoModels(ViolationsViewModels, observableDtoModels);
@@ -83,8 +100,10 @@ namespace CarSystem.App.Windows
 			FineNumberTextBox.Text = "";
 			EGNTextBox.Text = "";
 			VehicleNumberTextBox.Text = "";
+			ViolationPickerButton.SelectedItem = null;
+			FilterButton.IsEnabled = false;
 
-			LoadAllRecords();
+			LoadViolationsViewModels();
 		}
 
 		private void TextBoxChange(object sender, TextChangedEventArgs e)
@@ -167,6 +186,17 @@ namespace CarSystem.App.Windows
 			else
 			{
 				ViolationsDataGrid.ContextMenu.Visibility = Visibility.Visible;
+			}
+		}
+
+		private void ViolationPickerButton_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			var violationViewModel = ViolationPickerButton.SelectedItem as ViolationViewModel;
+
+			if (violationViewModel != null)
+			{
+				FilterButton.IsEnabled = true;
+				ClearFiltersButton.IsEnabled = true;
 			}
 		}
 	}

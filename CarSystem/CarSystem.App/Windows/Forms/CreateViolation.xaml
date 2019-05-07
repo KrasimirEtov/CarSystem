@@ -24,12 +24,27 @@
 		<Label x:Name="PersonPickerLabel" Content="Изберете потребител:" HorizontalAlignment="Left" Margin="10,5.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
 		<Controls:SplitButton x:Name="PersonPickerButton" ItemsSource="{Binding PersonViewModels}" DisplayMemberPath="DisplayName" SelectionChanged="PersonPickerButton_SelectionChanged" Margin="10,36.4,1220.4,318.6" Grid.Row="1"/>
 
-		<Label x:Name="CarPickerLabel" Content="Изберете превозно средство:" HorizontalAlignment="Left" Margin="10,95.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" Visibility="Hidden"/>
-		<Controls:SplitButton x:Name="CarPickerButton" ItemsSource="{Binding CarViewModels}" DisplayMemberPath="DisplayName" Margin="10,127.4,1220.4,227.6" Grid.Row="1" Visibility="Hidden"/>
+		<Label x:Name="CarPickerLabel" Content="Изберете превозно средство:" HorizontalAlignment="Left" Margin="10,86.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" Visibility="Hidden"/>
+		<Controls:SplitButton x:Name="CarPickerButton" ItemsSource="{Binding CarViewModels}" DisplayMemberPath="DisplayName" SelectionChanged="CarPickerButton_SelectionChanged" Margin="10,118.4,1220.4,236.6" Grid.Row="1" Visibility="Hidden"/>
 
-		<Button x:Name="SaveButton" Content="Запиши" HorizontalAlignment="Left" Margin="463,318.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="220" Height="42" FontSize="16" Click="SaveButton_Click" Cursor="Hand"/>
+		<Label x:Name="ViolationPickerLabel" Content="Изберете вид нарушение:" HorizontalAlignment="Left" Margin="10,168.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" Visibility="Hidden"/>
+		<Controls:SplitButton x:Name="ViolationPickerButton" ItemsSource="{Binding ViolationViewModels}" DisplayMemberPath="Message" SelectionChanged="ViolationPickerButton_SelectionChanged" Margin="10,199.4,1220.4,155.6" Grid.Row="1" Visibility="Hidden"/>
+
+		<Label x:Name="FinePickerLabel" Content="Изберете вид глоба:" HorizontalAlignment="Left" Margin="398,5.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" Visibility="Hidden"/>
+		<Controls:SplitButton x:Name="FinePickerButton" ItemsSource="{Binding FineViewModels}" DisplayMemberPath="Violation" SelectionChanged="FinePickerButton_SelectionChanged" Margin="398,36.4,832.4,318.6" Grid.Row="1" Visibility="Hidden"/>
+
+		<Label x:Name="LicenceBackOnDatePickerLabel" Content="Изберете дата:" HorizontalAlignment="Left" Margin="398,86.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" Visibility="Hidden"/>
+		<DatePicker x:Name="LicenceBackOnDatePicker" SelectedDateChanged="LicenceBackOnDatePicker_SelectedDateChanged" HorizontalAlignment="Left" Margin="398,118.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="260" Height="39" Visibility="Hidden"/>
+
+		<Label x:Name="FinePriceLabel" Content="Въведете цена:" HorizontalAlignment="Left" Margin="398,162.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" Visibility="Hidden"/>
+		<Controls:NumericUpDown x:Name="FinePriceNumericUpDown" Minimum="0" Maximum="10000" Margin="398,194.4,972.4,155.6" Grid.Row="1" Visibility="Hidden"/>
+
+		<Label x:Name="FineNumberLabel" Content="Въведете №:" HorizontalAlignment="Left" Margin="538,162.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" Visibility="Hidden"/>
+		<Controls:NumericUpDown x:Name="FineNumberNumericUpDown" Minimum="0" Margin="538,194.4,832.4,155.6" Grid.Row="1" Visibility="Hidden"/>
+		
+		<Button x:Name="SaveButton" Content="Запиши" HorizontalAlignment="Left" Margin="463,318.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="220" Height="42" FontSize="16" Click="SaveButton_Click" Cursor="Hand" IsEnabled="False"/>
 		<Button x:Name="CancelButton" Content="Отказ" HorizontalAlignment="Left" Margin="10,318.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="220" Height="42" FontSize="16" Click="CancelButton_Click" Cursor="Hand"/>
-		<Button x:Name="ClearButton" Content="Изчисти полетата" HorizontalAlignment="Left" Margin="235,318.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="223" Height="42" FontSize="13" Click="ClearButton_Click" Cursor="Hand"/>
-
+		<Button x:Name="ClearButton" Content="Изчисти полетата" HorizontalAlignment="Left" Margin="235,318.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="223" Height="42" FontSize="13" Click="ClearButton_Click" Cursor="Hand" IsEnabled="False"/>
+		
 	</Grid>
 </Controls:MetroWindow>

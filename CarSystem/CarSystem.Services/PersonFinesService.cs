@@ -19,7 +19,7 @@ namespace CarSystem.Services
 			this.context = context;
 		}
 
-		public Task<List<PersonFines>> GetFilteredPersonFinesAsync(string violationName, string cardId = "", string egn = "", string carNumber = "", string fineNumber = "")
+		public Task<List<PersonFines>> GetFilteredPersonFinesAsync(string violationName = "", string cardId = "", string egn = "", string carNumber = "", string fineNumber = "")
 		{
 			var personFines = this.context.PersonFines
 				.Where(x => x.Violation.Name.Contains(violationName) && !x.IsDeleted)
@@ -62,6 +62,23 @@ namespace CarSystem.Services
 				this.context.PersonFines.Remove(dbRecord);
 			}
 
+			await this.context.SaveChangesAsync();
+		}
+
+		public async Task CreatePersonFineAsync(int personId, int carId, int violationId, int fineId, decimal finePrice, string fineNumber, DateTime licenceBackOn)
+		{
+			var personFineRecord = new PersonFines()
+			{
+				PersonId = personId,
+				CarId = carId,
+				ViolationId = violationId,
+				FineId = fineId,
+				FineNumber = fineNumber,
+				Price = finePrice,
+				LicenceBackOn = licenceBackOn
+			};
+
+			this.context.PersonFines.Add(personFineRecord);
 			await this.context.SaveChangesAsync();
 		}
 	}
