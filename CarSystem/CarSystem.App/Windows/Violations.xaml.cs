@@ -85,10 +85,15 @@ namespace CarSystem.App.Windows
 		private void FilterButton_Click(object sender, RoutedEventArgs e)
 		{
 			var personFinesService = container.Resolve<IPersonFinesService>();
-
+			string violationName = string.Empty;
 			var violationViewModel = ViolationPickerButton.SelectedItem as ViolationViewModel;
 
-			var dbRecords = personFinesService.GetFilteredPersonFinesAsync(violationViewModel.Name, CardIdTextBox.Text, EGNTextBox.Text, VehicleNumberTextBox.Text, FineNumberTextBox.Text).Result;
+			if (violationViewModel != null)
+			{
+				violationName = violationViewModel.Name;
+			}
+
+			var dbRecords = personFinesService.GetFilteredPersonFinesAsync(violationName, CardIdTextBox.Text, EGNTextBox.Text, VehicleNumberTextBox.Text, FineNumberTextBox.Text).Result;
 
 			var observableDtoModels = ModelHandler.PersonFinesToObservableDto(dbRecords);
 			ModelHandler.ProcessObservableDtoModels(ViolationsViewModels, observableDtoModels);

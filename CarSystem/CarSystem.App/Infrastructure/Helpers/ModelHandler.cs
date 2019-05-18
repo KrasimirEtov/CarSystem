@@ -13,6 +13,16 @@ namespace CarSystem.App.Infrastructure.Helpers
 {
 	public static class ModelHandler
 	{
+		public static void ProcessObservableDtoModels<T>(ObservableCollection<T> toModify, ObservableCollection<T> source)
+		{
+			toModify.Clear();
+
+			foreach (var item in source)
+			{
+				toModify.Add(item);
+			}
+		}
+
 		public static ObservableCollection<ViolationsViewModel> PersonFinesToObservableDto(List<PersonFines> dbRecords)
 		{
 			var dtoModels = dbRecords.Select(x => Mapper.Map<ViolationsViewModel>(x)).ToList();
@@ -34,16 +44,6 @@ namespace CarSystem.App.Infrastructure.Helpers
 			return new ObservableCollection<CarViewModel>(dtoModels);
 		}
 
-		public static void ProcessObservableDtoModels<T>(ObservableCollection<T> toModify, ObservableCollection<T> source)
-		{
-			toModify.Clear();
-
-			foreach (var item in source)
-			{
-				toModify.Add(item);
-			}
-		}
-
 		public static ObservableCollection<ViolationViewModel> ViolationsToObservableDto(List<Violation> dbRecords)
 		{
 			var dtoModels = dbRecords.Select(x => Mapper.Map<ViolationViewModel>(x)).ToList();
@@ -56,6 +56,13 @@ namespace CarSystem.App.Infrastructure.Helpers
 			var dtoModels = dbRecords.Select(x => Mapper.Map<FineViewModel>(x)).ToList();
 
 			return new ObservableCollection<FineViewModel>(dtoModels);
+		}
+
+		public static ObservableCollection<GenderViewModel> GendersToObservableDto(List<Gender> dbRecords)
+		{
+			var dtoModels = dbRecords.Select(x => Mapper.Map<GenderViewModel>(x)).ToList();
+
+			return new ObservableCollection<GenderViewModel>(dtoModels);
 		}
 	}
 }

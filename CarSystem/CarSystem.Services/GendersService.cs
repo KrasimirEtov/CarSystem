@@ -10,26 +10,18 @@ using CarSystem.Services.Contracts;
 
 namespace CarSystem.Services
 {
-	public class CarService : ICarService
+	public class GendersService : IGendersService
 	{
 		private readonly CarSystemDbContext context;
 
-		public CarService(CarSystemDbContext context)
+		public GendersService(CarSystemDbContext context)
 		{
 			this.context = context;
 		}
 
-		public Task<List<Car>> GetPersonCarsAsync(int personId)
+		public Task<List<Gender>> GetAllGendersAsync()
 		{
-			return this.context.PersonCars
-				.Where(x => x.PersonId == personId)
-				.Select(x => x.Car)
-				.ToListAsync();
-		}
-
-		public Task<List<Car>> GetAllCarsAsync()
-		{
-			return this.context.Cars
+			return this.context.Genders
 				.ToListAsync();
 		}
 	}

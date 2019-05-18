@@ -33,7 +33,7 @@
 			<Image Source="/CarSystem.App;component/Images/References.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="100"/>
 		</Controls:Tile>
 
-		<Controls:Tile x:Name="RegistrationsTile" Grid.Column="0" Grid.Row="3" Margin="10,10,680,10" Title="Регистрации" Opacity="0.95" TitleFontSize="18" Cursor="Hand" Height="Auto" Width="675">
+		<Controls:Tile x:Name="RegistrationsTile" Grid.Column="0" Grid.Row="3" Margin="10,10,680,10" Title="Регистрации" Opacity="0.95" TitleFontSize="18" Cursor="Hand" Height="Auto" Width="675" Click="RegistrationsTile_Click">
 			<Image Source="/CarSystem.App;component/Images/Registrations.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="105"/>
 		</Controls:Tile>
 

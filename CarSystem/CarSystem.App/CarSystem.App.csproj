@@ -86,16 +86,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Infrastructure\CarSystemConstants.cs" />
     <Compile Include="Infrastructure\ContainerConfiguration.cs" />
     <Compile Include="Infrastructure\Helpers\ModelHandler.cs" />
     <Compile Include="Infrastructure\ProviderMappingProfile.cs" />
+    <Compile Include="Models\GenderViewModel.cs" />
     <Compile Include="Models\ViolationsViewModel.cs" />
     <Compile Include="Models\CarViewModel.cs" />
     <Compile Include="Models\CreateViolationViewModel.cs" />
     <Compile Include="Models\FineViewModel.cs" />
     <Compile Include="Models\PersonViewModel.cs" />
     <Compile Include="Models\ViolationViewModel.cs" />
+    <Compile Include="Windows\Forms\CreatePerson.xaml.cs">
+      <DependentUpon>CreatePerson.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Violations.xaml.cs">
       <DependentUpon>Violations.xaml</DependentUpon>
     </Compile>
@@ -105,8 +108,8 @@
     <Compile Include="Windows\MyMenu.xaml.cs">
       <DependentUpon>MyMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\ViolationsNOTUSED.xaml.cs">
-      <DependentUpon>ViolationsNOTUSED.xaml</DependentUpon>
+    <Compile Include="Windows\Registrations.xaml.cs">
+      <DependentUpon>Registrations.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +123,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\Forms\CreatePerson.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Violations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,7 +139,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\ViolationsNOTUSED.xaml">
+    <Page Include="Windows\Registrations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,6 +216,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\HamburgerMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Car.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AddPerson.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

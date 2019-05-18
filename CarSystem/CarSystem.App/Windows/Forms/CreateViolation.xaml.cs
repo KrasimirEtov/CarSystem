@@ -236,10 +236,12 @@ namespace CarSystem.App.Windows.Forms
 			if (!String.IsNullOrEmpty(LicenceBackOnDatePicker.Text))
 			{
 				FinePriceLabel.Visibility = Visibility.Visible;
+				FinePriceNumericUpDown.Value = 0;
 				FinePriceNumericUpDown.Visibility = Visibility.Visible;
 
 				FineNumberLabel.Visibility = Visibility.Visible;
 				FineNumberNumericUpDown.Visibility = Visibility.Visible;
+				FineNumberNumericUpDown.Value = 0;
 
 				SaveButton.IsEnabled = true;
 			}

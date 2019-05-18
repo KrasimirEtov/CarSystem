@@ -30,7 +30,7 @@ namespace CarSystem.App.Models
 			}
 		}
 
-		[DisplayName("глоба")]
+		[DisplayName("Глоба")]
 		public string FinePrice
 		{
 			get { return this.finePrice; }

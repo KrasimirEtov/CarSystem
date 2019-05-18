@@ -66,6 +66,12 @@ namespace CarSystem.App.Infrastructure
 				.ForMember(dest => dest.Model, opt => opt.MapFrom(src => src.Model))
 				.ForMember(dest => dest.Number, opt => opt.MapFrom(src => src.Number))
 				.ForAllOtherMembers(opt => opt.Ignore());
+
+			// Gender -> GenderViewModel
+			CreateMap<Gender, GenderViewModel>()
+				.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+				.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+				.ForAllOtherMembers(opt => opt.Ignore());
 		}
 	}
 }

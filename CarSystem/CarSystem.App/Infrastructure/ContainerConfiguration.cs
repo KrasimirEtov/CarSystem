@@ -21,11 +21,12 @@ namespace CarSystem.App.Infrastructure
 			// Register windows
 			builder.RegisterType<MyMenu>().AsSelf();
 			builder.RegisterType<MainWindow>().AsSelf();
-			builder.RegisterType<ViolationsNOTUSED>().AsSelf(); // Use this for registering db records window
+			builder.RegisterType<Registrations>().AsSelf();
 			builder.RegisterType<Violations>().AsSelf();
 
 			// Register form windows
 			builder.RegisterType<CreateViolation>().AsSelf();
+			builder.RegisterType<CreatePerson>().AsSelf();
 
 			// Register Database context
 			builder.RegisterType<CarSystemDbContext>().AsSelf();
@@ -36,6 +37,8 @@ namespace CarSystem.App.Infrastructure
 			builder.RegisterType<CarService>().As<ICarService>();
 			builder.RegisterType<ViolationService>().As<IViolationService>();
 			builder.RegisterType<FineService>().As<IFineService>();
+			builder.RegisterType<GendersService>().As<IGendersService>();
+			builder.RegisterType<PersonCarsService>().As<IPersonCarsService>();
 
 			return builder.Build();
 		}

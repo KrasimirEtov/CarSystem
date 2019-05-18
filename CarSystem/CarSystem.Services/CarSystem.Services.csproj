@@ -46,11 +46,15 @@
     <Compile Include="CarService.cs" />
     <Compile Include="Contracts\ICarService.cs" />
     <Compile Include="Contracts\IFineService.cs" />
+    <Compile Include="Contracts\IGendersService.cs" />
     <Compile Include="Contracts\IPeopleService.cs" />
+    <Compile Include="Contracts\IPersonCarsService.cs" />
     <Compile Include="Contracts\IPersonFinesService.cs" />
     <Compile Include="Contracts\IViolationService.cs" />
     <Compile Include="FineService.cs" />
+    <Compile Include="GendersService.cs" />
     <Compile Include="PeopleService.cs" />
+    <Compile Include="PersonCarsService.cs" />
     <Compile Include="PersonFinesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViolationService.cs" />

@@ -29,5 +29,12 @@ namespace CarSystem.App.Windows
 			this.Close();
 			startupWindow.ShowDialog();
 		}
+
+		private void RegistrationsTile_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			var registrationsWindow = container.Resolve<Registrations>();
+			this.Close();
+			registrationsWindow.ShowDialog();
+		}
 	}
 }

@@ -13,18 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Autofac;
 using CarSystem.App.Infrastructure;
+using CarSystem.App.Windows.Forms;
 using MahApps.Metro.Controls;
 
 namespace CarSystem.App.Windows
 {
 	/// <summary>
-	/// Interaction logic for Violations.xaml
+	/// Interaction logic for Registrations.xaml
 	/// </summary>
-	public partial class ViolationsNOTUSED : MetroWindow
+	public partial class Registrations : MetroWindow
 	{
 		IContainer container = ContainerConfiguration.GetContainer();
 
-		public ViolationsNOTUSED()
+		public Registrations()
 		{
 			InitializeComponent();
 		}
@@ -47,6 +48,13 @@ namespace CarSystem.App.Windows
 		{
 			var startupWindow = container.Resolve<Violations>();
 			this.Close();
+			startupWindow.ShowDialog();
+		}
+
+		private void AddPersonTile_Click(object sender, RoutedEventArgs e)
+		{
+			var startupWindow = container.Resolve<CreatePerson>();
+
 			startupWindow.ShowDialog();
 		}
 	}

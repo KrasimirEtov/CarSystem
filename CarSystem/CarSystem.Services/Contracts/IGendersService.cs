@@ -7,10 +7,8 @@ using CarSystem.Data.Models;
 
 namespace CarSystem.Services.Contracts
 {
-	public interface ICarService
+	public interface IGendersService
 	{
-		Task<List<Car>> GetPersonCarsAsync(int personId);
-
-		Task<List<Car>> GetAllCarsAsync();
+		Task<List<Gender>> GetAllGendersAsync();
 	}
 }
