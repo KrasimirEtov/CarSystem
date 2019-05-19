@@ -27,6 +27,7 @@ namespace CarSystem.App.Infrastructure
 			// Register form windows
 			builder.RegisterType<CreateViolation>().AsSelf();
 			builder.RegisterType<CreatePerson>().AsSelf();
+			builder.RegisterType<CreateCar>().AsSelf();
 
 			// Register Database context
 			builder.RegisterType<CarSystemDbContext>().AsSelf();

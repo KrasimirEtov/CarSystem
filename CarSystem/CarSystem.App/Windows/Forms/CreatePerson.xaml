@@ -19,7 +19,7 @@
 		</Grid.RowDefinitions>
 
 		<Rectangle Grid.Row="0" Fill="GhostWhite" />
-		<TextBlock HorizontalAlignment="Center" Margin="209,10,996.4,12.6" Grid.Row="0" TextWrapping="Wrap" Text="Създаване на нов потребител" VerticalAlignment="Center" Height="27" Width="285" FontSize="20"/>
+		<TextBlock HorizontalAlignment="Center" Margin="179,13,1006.4,9.6" Grid.Row="0" TextWrapping="Wrap" Text="Регистриране на нов потребител" VerticalAlignment="Center" Height="27" Width="305" FontSize="20"/>
 
 		<Label x:Name="FirstNameLabel" Content="Въведете име:" HorizontalAlignment="Left" Margin="10,11.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
 		<TextBox x:Name="FirstNameTextBox" HorizontalAlignment="Left" Height="23" Margin="165,15.4,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи име тук" VerticalAlignment="Top" Width="319" TextChanged="TextBoxChange"/>

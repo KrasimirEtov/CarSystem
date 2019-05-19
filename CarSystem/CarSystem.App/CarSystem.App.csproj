@@ -96,6 +96,9 @@
     <Compile Include="Models\FineViewModel.cs" />
     <Compile Include="Models\PersonViewModel.cs" />
     <Compile Include="Models\ViolationViewModel.cs" />
+    <Compile Include="Windows\Forms\CreateCar.xaml.cs">
+      <DependentUpon>CreateCar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Forms\CreatePerson.xaml.cs">
       <DependentUpon>CreatePerson.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\Forms\CreateCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Forms\CreatePerson.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

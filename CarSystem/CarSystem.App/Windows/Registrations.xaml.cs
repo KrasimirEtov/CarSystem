@@ -53,9 +53,16 @@ namespace CarSystem.App.Windows
 
 		private void AddPersonTile_Click(object sender, RoutedEventArgs e)
 		{
-			var startupWindow = container.Resolve<CreatePerson>();
+			var createPersonWindow = container.Resolve<CreatePerson>();
 
-			startupWindow.ShowDialog();
+			createPersonWindow.ShowDialog();
+		}
+
+		private void AddCarTile_Click(object sender, RoutedEventArgs e)
+		{
+			var createCarWindow = container.Resolve<CreateCar>();
+
+			createCarWindow.ShowDialog();
 		}
 	}
 }

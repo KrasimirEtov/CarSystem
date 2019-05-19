@@ -1,0 +1,37 @@
+﻿<Controls:MetroWindow x:Name="CreateCarWindow" x:Class="CarSystem.App.Windows.Forms.CreateCar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarSystem.App.Windows.Forms"
+		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Регистриране на ново превозно средство" Height="500" Width="500" Background="Gainsboro" WindowStartupLocation="CenterScreen">
+	<Grid>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50"/>
+			<RowDefinition Height="450"/>
+		</Grid.RowDefinitions>
+
+		<Rectangle Grid.Row="0" Fill="GhostWhite" />
+		<TextBlock HorizontalAlignment="Center" Margin="195,10,996.4,12.6" Grid.Row="0" TextWrapping="Wrap" Text="Регистриране на нов автомобил" VerticalAlignment="Center" Height="27" Width="299" FontSize="20"/>
+
+		<Label x:Name="BrandLabel" Content="Mарка:" HorizontalAlignment="Left" Margin="10,11.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+		<TextBox x:Name="BrandTextBox" HorizontalAlignment="Left" Height="23" Margin="119,16.4,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи марка" VerticalAlignment="Top" Width="136" TextChanged="TextBoxChange"/>
+
+		<Label x:Name="ModelLabel" Content="Mодел:" HorizontalAlignment="Left" Margin="260,9.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+		<TextBox x:Name="ModelTextBox" HorizontalAlignment="Left" Height="23" Margin="361,15.4,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи модел" VerticalAlignment="Top" Width="123" TextChanged="TextBoxChange"/>
+
+		<Label x:Name="EnginePowerLabel" Content="Конски сили:" HorizontalAlignment="Left" Margin="10,54.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+		<Controls:NumericUpDown x:Name="EnginePowerNumericUpDown" Minimum="0" Margin="119,59.4,1235.4,364" Grid.Row="1"/>
+
+		<Label x:Name="PeopleCarryLabel" Content="Брой места:" HorizontalAlignment="Left" Margin="260,54.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+		<Controls:NumericUpDown x:Name="PeopleCarryNumericUpDown" Minimum="0" Margin="361,59.4,1006.4,364" Grid.Row="1"/>
+
+	</Grid>
+</Controls:MetroWindow>
