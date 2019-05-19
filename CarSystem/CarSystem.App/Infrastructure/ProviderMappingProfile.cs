@@ -72,6 +72,18 @@ namespace CarSystem.App.Infrastructure
 				.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
 				.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
 				.ForAllOtherMembers(opt => opt.Ignore());
+
+			// Fuel -> FuelViewModel
+			CreateMap<Fuel, FuelViewModel>()
+				.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+				.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+				.ForAllOtherMembers(opt => opt.Ignore());
+
+			// EmissionStandart -> EmissionStandartViewModel
+			CreateMap<EmissionStandart, EmissionStandartViewModel>()
+				.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+				.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+				.ForAllOtherMembers(opt => opt.Ignore());
 		}
 	}
 }

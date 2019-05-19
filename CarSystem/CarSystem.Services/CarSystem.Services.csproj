@@ -45,13 +45,17 @@
   <ItemGroup>
     <Compile Include="CarService.cs" />
     <Compile Include="Contracts\ICarService.cs" />
+    <Compile Include="Contracts\IEmissionStandartService.cs" />
     <Compile Include="Contracts\IFineService.cs" />
+    <Compile Include="Contracts\IFuelService.cs" />
     <Compile Include="Contracts\IGendersService.cs" />
     <Compile Include="Contracts\IPeopleService.cs" />
     <Compile Include="Contracts\IPersonCarsService.cs" />
     <Compile Include="Contracts\IPersonFinesService.cs" />
     <Compile Include="Contracts\IViolationService.cs" />
+    <Compile Include="EmissionStandartService.cs" />
     <Compile Include="FineService.cs" />
+    <Compile Include="FuelService.cs" />
     <Compile Include="GendersService.cs" />
     <Compile Include="PeopleService.cs" />
     <Compile Include="PersonCarsService.cs" />

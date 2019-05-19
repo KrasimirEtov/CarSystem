@@ -40,6 +40,8 @@ namespace CarSystem.App.Infrastructure
 			builder.RegisterType<FineService>().As<IFineService>();
 			builder.RegisterType<GendersService>().As<IGendersService>();
 			builder.RegisterType<PersonCarsService>().As<IPersonCarsService>();
+			builder.RegisterType<EmissionStandartService>().As<IEmissionStandartService>();
+			builder.RegisterType<FuelService>().As<IFuelService>();
 
 			return builder.Build();
 		}

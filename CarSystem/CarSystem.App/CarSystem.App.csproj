@@ -80,6 +80,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WriteableBitmapEx.Wpf, Version=1.5.0.0, Culture=neutral, PublicKeyToken=50375ca6144f1c69, processorArchitecture=MSIL">
+      <HintPath>..\packages\WriteableBitmapEx.1.5.1.0\lib\net40\WriteableBitmapEx.Wpf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -89,6 +92,8 @@
     <Compile Include="Infrastructure\ContainerConfiguration.cs" />
     <Compile Include="Infrastructure\Helpers\ModelHandler.cs" />
     <Compile Include="Infrastructure\ProviderMappingProfile.cs" />
+    <Compile Include="Models\EmissionStandartViewModel.cs" />
+    <Compile Include="Models\FuelViewModel.cs" />
     <Compile Include="Models\GenderViewModel.cs" />
     <Compile Include="Models\ViolationsViewModel.cs" />
     <Compile Include="Models\CarViewModel.cs" />

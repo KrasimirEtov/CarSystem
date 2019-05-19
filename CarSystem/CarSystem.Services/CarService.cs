@@ -32,5 +32,25 @@ namespace CarSystem.Services
 			return this.context.Cars
 				.ToListAsync();
 		}
+
+		public async Task CreateCarAsync(string carBrand, string carModel, int enginePower, int peopleCarry, int weight, string color, int fuelId, int emissionStandartId, string number)
+		{
+			var car = new Car()
+			{
+				Brand = carBrand,
+				EmissionStandartId = emissionStandartId,
+				EnginePower = enginePower,
+				FuelId = fuelId,
+				Model = carModel,
+				PeopleCarry = peopleCarry,
+				Paint = color,
+				Weight = weight,
+				Number = number
+			};
+
+			this.context.Cars.Add(car);
+
+			await this.context.SaveChangesAsync();
+		}
 	}
 }

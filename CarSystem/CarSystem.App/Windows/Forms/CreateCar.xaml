@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CarSystem.App.Windows.Forms"
 		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Регистриране на ново превозно средство" Height="500" Width="500" Background="Gainsboro" WindowStartupLocation="CenterScreen">
+        Title="Регистриране на ново превозно средство" Height="350" Width="500" Background="Gainsboro" WindowStartupLocation="CenterScreen">
 	<Grid>
 
 		<Grid.ColumnDefinitions>
@@ -15,11 +15,11 @@
 
 		<Grid.RowDefinitions>
 			<RowDefinition Height="50"/>
-			<RowDefinition Height="450"/>
+			<RowDefinition Height="300"/>
 		</Grid.RowDefinitions>
 
 		<Rectangle Grid.Row="0" Fill="GhostWhite" />
-		<TextBlock HorizontalAlignment="Center" Margin="195,10,996.4,12.6" Grid.Row="0" TextWrapping="Wrap" Text="Регистриране на нов автомобил" VerticalAlignment="Center" Height="27" Width="299" FontSize="20"/>
+		<TextBlock HorizontalAlignment="Center" Margin="185,12,1006.4,10.6" Grid.Row="0" TextWrapping="Wrap" Text="Регистриране на нов автомобил" VerticalAlignment="Center" Height="27" Width="299" FontSize="20"/>
 
 		<Label x:Name="BrandLabel" Content="Mарка:" HorizontalAlignment="Left" Margin="10,11.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
 		<TextBox x:Name="BrandTextBox" HorizontalAlignment="Left" Height="23" Margin="119,16.4,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи марка" VerticalAlignment="Top" Width="136" TextChanged="TextBoxChange"/>
@@ -28,10 +28,30 @@
 		<TextBox x:Name="ModelTextBox" HorizontalAlignment="Left" Height="23" Margin="361,15.4,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи модел" VerticalAlignment="Top" Width="123" TextChanged="TextBoxChange"/>
 
 		<Label x:Name="EnginePowerLabel" Content="Конски сили:" HorizontalAlignment="Left" Margin="10,54.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
-		<Controls:NumericUpDown x:Name="EnginePowerNumericUpDown" Minimum="0" Margin="119,59.4,1235.4,364" Grid.Row="1"/>
+		<Controls:NumericUpDown x:Name="EnginePowerNumericUpDown" Value="50" Minimum="50" Margin="119,59.4,1235.4,215.4" Grid.Row="1"/>
 
 		<Label x:Name="PeopleCarryLabel" Content="Брой места:" HorizontalAlignment="Left" Margin="260,54.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
-		<Controls:NumericUpDown x:Name="PeopleCarryNumericUpDown" Minimum="0" Margin="361,59.4,1006.4,364" Grid.Row="1"/>
+		<Controls:NumericUpDown x:Name="PeopleCarryNumericUpDown" Value="3" Minimum="3" Margin="361,59.4,1006.4,215.4" Grid.Row="1"/>
+
+		<Label x:Name="FuelPickerLabel" Content="Гориво:" HorizontalAlignment="Left" Margin="10,97.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+		<Controls:SplitButton x:Name="FuelPickerButton" ItemsSource="{Binding FuelViewModels}" DisplayMemberPath="Name" SelectionChanged="FuelPickerButton_SelectionChanged" Margin="119,103.4,1235.4,171.4" Grid.Row="1"/>
+
+		<Label x:Name="EmissionStandartLabel" Content="Стандарт:" HorizontalAlignment="Left" Margin="260,97.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+		<Controls:SplitButton x:Name="EmissionStandartPickerButton" ItemsSource="{Binding EmissionStandartViewModels}" DisplayMemberPath="Name" SelectionChanged="EmissionStandartPickerButton_SelectionChanged" Margin="361,103.4,1006.4,171.4" Grid.Row="1"/>
+
+		<Label x:Name="WeightLabel" Content="Тегло:" HorizontalAlignment="Left" Margin="10,144.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+		<Controls:NumericUpDown x:Name="WeightNumericUpDown" Value="0" Minimum="0" Margin="119,148.4,1235.4,126.4" Grid.Row="1"/>
+
+		<Label x:Name="ColorLabel" Content="Цвят:" HorizontalAlignment="Left" Margin="260,144.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+		<TextBox x:Name="ColorTextBox" HorizontalAlignment="Left" Height="23" Margin="361,148.4,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи цвят" VerticalAlignment="Top" Width="123" TextChanged="TextBoxChange"/>
+
+		<Label x:Name="NumberLabel" Content="Номер:" HorizontalAlignment="Left" Margin="13,186.4,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
+		<TextBox x:Name="NumberTextBox" HorizontalAlignment="Left" Height="23" Margin="119,191.4,0,0" Grid.Row="1" TextWrapping="Wrap" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Въведи номер" VerticalAlignment="Top" Width="136" TextChanged="TextBoxChange"/>
+
+		<Button x:Name="SaveButton" Content="Запиши" HorizontalAlignment="Left" Margin="334,224.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Height="38" FontSize="14" Click="SaveButton_Click" Cursor="Hand" IsEnabled="False"/>
+		<Button x:Name="CancelButton" Content="Отказ" HorizontalAlignment="Left" Margin="10,223.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Height="38" FontSize="14" Click="CancelButton_Click" Cursor="Hand"/>
+		<Button x:Name="ClearButton" Content="Изчисти полетата" HorizontalAlignment="Left" Margin="165,224.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" Height="38" FontSize="13" Click="ClearButton_Click" Cursor="Hand" IsEnabled="False"/>
+
 
 	</Grid>
 </Controls:MetroWindow>

@@ -64,5 +64,19 @@ namespace CarSystem.App.Infrastructure.Helpers
 
 			return new ObservableCollection<GenderViewModel>(dtoModels);
 		}
+
+		public static ObservableCollection<FuelViewModel> FuelsToObservableDto(List<Fuel> dbRecords)
+		{
+			var dtoModels = dbRecords.Select(x => Mapper.Map<FuelViewModel>(x)).ToList();
+
+			return new ObservableCollection<FuelViewModel>(dtoModels);
+		}
+
+		public static ObservableCollection<EmissionStandartViewModel> EmissionStandartsToObservableDto(List<EmissionStandart> dbRecords)
+		{
+			var dtoModels = dbRecords.Select(x => Mapper.Map<EmissionStandartViewModel>(x)).ToList();
+
+			return new ObservableCollection<EmissionStandartViewModel>(dtoModels);
+		}
 	}
 }

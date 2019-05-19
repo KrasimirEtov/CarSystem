@@ -12,5 +12,7 @@ namespace CarSystem.Services.Contracts
 		Task<List<Car>> GetPersonCarsAsync(int personId);
 
 		Task<List<Car>> GetAllCarsAsync();
+
+		Task CreateCarAsync(string carBrand, string carModel, int enginePower, int peopleCarry, int weight, string color, int fuelId, int emissionStandartId, string number);
 	}
 }
