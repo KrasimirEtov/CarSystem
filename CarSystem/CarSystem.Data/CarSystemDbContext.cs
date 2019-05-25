@@ -14,7 +14,7 @@ namespace CarSystem.Data
 	{
 		public CarSystemDbContext() : base("CarSystemDb")
 		{
-
+			Database.SetInitializer(new MigrateDatabaseToLatestVersion<CarSystemDbContext, Migrations.Configuration>());
 		}
 
 		public DbSet<Person> People { get; set; }

@@ -11,7 +11,8 @@
 	{
 		public Configuration()
 		{
-			AutomaticMigrationsEnabled = false;
+			AutomaticMigrationsEnabled = true;
+			AutomaticMigrationDataLossAllowed = true;
 		}
 
 		protected override void Seed(CarSystem.Data.CarSystemDbContext context)
