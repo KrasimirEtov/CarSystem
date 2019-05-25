@@ -14,7 +14,18 @@ namespace CarSystem.App.Infrastructure
 {
 	public class ContainerConfiguration
 	{
+		private static IContainer container = null;
+
 		public static IContainer GetContainer()
+		{
+			if (container == null)
+			{
+				container = InitializeContainer();
+			}
+			return container;
+		}
+
+		public static IContainer InitializeContainer()
 		{
 			var builder = new ContainerBuilder();
 
@@ -23,6 +34,7 @@ namespace CarSystem.App.Infrastructure
 			builder.RegisterType<MainWindow>().AsSelf();
 			builder.RegisterType<Registrations>().AsSelf();
 			builder.RegisterType<Violations>().AsSelf();
+			builder.RegisterType<References>().AsSelf();
 
 			// Register form windows
 			builder.RegisterType<CreateViolation>().AsSelf();
@@ -42,6 +54,7 @@ namespace CarSystem.App.Infrastructure
 			builder.RegisterType<PersonCarsService>().As<IPersonCarsService>();
 			builder.RegisterType<EmissionStandartService>().As<IEmissionStandartService>();
 			builder.RegisterType<FuelService>().As<IFuelService>();
+			builder.RegisterType<ExportService>().As<IExportService>();
 
 			return builder.Build();
 		}

@@ -23,7 +23,8 @@ namespace CarSystem.App.Infrastructure
 				.ForMember(dest => dest.CardId, opt => opt.MapFrom(src => src.Person.CardId))
 				.ForMember(dest => dest.CarModel, opt => opt.MapFrom(src => src.Car.Model))
 				.ForMember(dest => dest.CarBrand, opt => opt.MapFrom(src => src.Car.Brand))
-				.ForMember(dest => dest.CarNumber, opt => opt.MapFrom(src => src.Car.Number));
+				.ForMember(dest => dest.CarNumber, opt => opt.MapFrom(src => src.Car.Number))
+				.ForMember(dest => dest.FineNumber, opt => opt.MapFrom(src => src.FineNumber));
 
 			// CreateViolationViewModel -> PersonFines
 			CreateMap<CreateViolationViewModel, PersonFines>()

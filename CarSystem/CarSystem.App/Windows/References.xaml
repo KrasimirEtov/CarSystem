@@ -1,0 +1,64 @@
+﻿<Controls:MetroWindow x:Name="ReferencesWindow" x:Class="CarSystem.App.Windows.References"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:CarSystem.App.Windows"
+        mc:Ignorable="d"
+        Title="Справки" Height="400" Width="600" Background="Gainsboro" WindowStartupLocation="CenterScreen">
+	<Grid>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50"/>
+			<RowDefinition Height="350"/>
+		</Grid.RowDefinitions>
+
+		<Rectangle Grid.Row="0" Fill="GhostWhite" />
+
+		<Button x:Name="PreviousButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Width="42" Cursor="Hand" ToolTip="Върни се към предишният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="PreviousButton_Click">
+			<Image Source="/CarSystem.App;component/Images/Previous.png" Height="33" Width="31" />
+		</Button>
+		<Button x:Name="HomeScreenButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="60,6,0,0" VerticalAlignment="Top" Width="43" Cursor="Hand" ToolTip="Върни се към началният екран" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="HomeScreenButton_Click">
+			<Image Source="/CarSystem.App;component/Images/HomeScreen.png" Height="32" Width="28" />
+		</Button>
+		<TextBlock HorizontalAlignment="Center" Margin="378,12,781.8,10.6" TextWrapping="Wrap" Text="Изберете вид справка" VerticalAlignment="Center" Height="27" Width="205" FontSize="20"/>
+
+		<TabControl Name="ReferencesTabControl" HorizontalAlignment="Left" Height="310" Margin="0,0.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="594">
+
+			<TabItem Name="PeopleTabItem" Header="Потребители" Background="Gainsboro" Selector.Selected="PeopleTabItem_Selected">
+				<Grid Background="Gainsboro">
+					<Label x:Name="PersonPickerLabel" Content="Изберете потребител:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16"/>
+
+					<Controls:SplitButton x:Name="PersonPickerButton" ItemsSource="{Binding PersonViewModels}" DisplayMemberPath="DisplayName" Margin="10,42,388,192.8" SelectionChanged="PersonPickerButton_SelectionChanged"/>
+
+					<Image Name="PersonPdfDownloadImage" Source="/CarSystem.App;component/Images/Pdf.png" Margin="10,177,348,18.8" Cursor="Hand" PreviewMouseLeftButtonDown="PersonPdfDownloadImage_PreviewMouseLeftButtonDown" Visibility="Hidden" />
+
+					<DockPanel HorizontalAlignment="Left" Height="100" LastChildFill="False" Margin="26,126,0,0" VerticalAlignment="Top" Width="100">
+						<WrapPanel Height="99.2" VerticalAlignment="Top" Width="100"/>
+
+					</DockPanel>
+
+				</Grid>
+			</TabItem>
+
+			<TabItem Name="CarsTabItem" Header="Превозни средства" Background="Gainsboro" Selector.Selected="CarsTabItem_Selected">
+				<Grid Background="Gainsboro">
+					<Label x:Name="CarPickerLabel" Content="Изберете превозно средство:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16"/>
+					
+					<Controls:SplitButton x:Name="CarPickerButton" ItemsSource="{Binding CarsViewModels}" DisplayMemberPath="DisplayName" Margin="10,42,349,192.8" SelectionChanged="CarPickerButton_SelectionChanged"/>
+
+					<Image Name="CarPdfDownloadImage" Source="/CarSystem.App;component/Images/Pdf.png" Margin="10,177,348,18.8" Cursor="Hand" PreviewMouseLeftButtonDown="CarPdfDownloadImage_PreviewMouseLeftButtonDown" Visibility="Hidden" />
+
+				</Grid>
+			</TabItem>
+
+		</TabControl>
+
+
+	</Grid>
+</Controls:MetroWindow>

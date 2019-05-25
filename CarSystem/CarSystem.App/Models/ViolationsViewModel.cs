@@ -18,6 +18,7 @@ namespace CarSystem.App.Models
 		private string carBrand;
 		private string carModel;
 		private string carNumber;
+		private string fineNumber;
 
 		[DisplayName("№")]
 		public int PersonFineId
@@ -26,6 +27,17 @@ namespace CarSystem.App.Models
 			set
 			{
 				this.personFineId = value;
+				NotifyPropertyChanged();
+			}
+		}
+
+		[DisplayName("№ фиш")]
+		public string FineNumber
+		{
+			get { return this.fineNumber; }
+			set
+			{
+				this.fineNumber = value;
 				NotifyPropertyChanged();
 			}
 		}
@@ -63,7 +75,7 @@ namespace CarSystem.App.Models
 			}
 		}
 
-		[DisplayName("№ л. карта")]
+		[DisplayName("№ Л.К")]
 		public string CardId
 		{
 			get { return this.cardId; }
@@ -96,7 +108,7 @@ namespace CarSystem.App.Models
 			}
 		}
 
-		[DisplayName("Номер")]
+		[DisplayName("№ кола")]
 		public string CarNumber
 		{
 			get { return this.carNumber; }

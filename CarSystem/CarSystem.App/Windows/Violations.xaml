@@ -31,7 +31,7 @@
 
 		<TextBlock HorizontalAlignment="Center" Margin="539,13,758.4,10.4" Grid.Row="0" TextWrapping="Wrap" Text="Списък с нарушения" VerticalAlignment="Center" Height="27" Width="193" FontSize="20"/>
 
-		<Button x:Name="HamburgerMenuButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="737,6,0,0" VerticalAlignment="Top" Width="43" Cursor="Hand" ToolTip="Кликни за допълнителни операции" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="HamburgerMenuButton_Click">
+		<Button x:Name="HamburgerMenuButton" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="737,6,0,0" VerticalAlignment="Top" Width="43" Cursor="Hand" ToolTip="Кликни за допълнителни опции" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" BorderBrush="Black" Height="38" Click="HamburgerMenuButton_Click">
 			<Image Source="/CarSystem.App;component/Images/HamburgerMenu.png" Height="22" Width="22" />
 		</Button>
 

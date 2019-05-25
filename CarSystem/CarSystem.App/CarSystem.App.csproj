@@ -80,8 +80,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WriteableBitmapEx.Wpf, Version=1.5.0.0, Culture=neutral, PublicKeyToken=50375ca6144f1c69, processorArchitecture=MSIL">
-      <HintPath>..\packages\WriteableBitmapEx.1.5.1.0\lib\net40\WriteableBitmapEx.Wpf.dll</HintPath>
+    <Reference Include="WriteableBitmapEx.Wpf, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WriteableBitmapEx.1.6.2\lib\net40\WriteableBitmapEx.Wpf.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +106,9 @@
     </Compile>
     <Compile Include="Windows\Forms\CreatePerson.xaml.cs">
       <DependentUpon>CreatePerson.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\References.xaml.cs">
+      <DependentUpon>References.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Violations.xaml.cs">
       <DependentUpon>Violations.xaml</DependentUpon>
@@ -136,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Forms\CreatePerson.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\References.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,6 +241,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\AddPerson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Pdf.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

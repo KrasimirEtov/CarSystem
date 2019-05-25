@@ -81,5 +81,19 @@ namespace CarSystem.Services
 			this.context.PersonFines.Add(personFineRecord);
 			await this.context.SaveChangesAsync();
 		}
+
+		public Task<List<PersonFines>> GetPersonFinesByPersonId(int personId)
+		{
+			return this.context.PersonFines
+				.Where(x => x.PersonId == personId)
+				.ToListAsync();
+		}
+
+		public Task<List<PersonFines>> GetCarFinesByCarId(int carId)
+		{
+			return this.context.PersonFines
+				.Where(x => x.CarId == carId)
+				.ToListAsync();
+		}
 	}
 }
